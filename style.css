@@ -140,15 +140,16 @@ body {
 .menu {
   position: absolute;
   z-index: 3;
+
   right: 7%;
   top: 12%;
+
   display: flex;
   flex-direction: column;
   gap: 34px;
 
   opacity: 1;
-  animation: softAppear 2s ease forwards;
-  animation-delay: 5s;
+  animation: none;
 }
 
 
