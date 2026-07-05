@@ -116,8 +116,8 @@ body {
   font-weight: 400;
   color: rgba(232,220,200,0.84);
 
-  opacity: 0;
-  animation: weldingTitle 4.8s ease forwards;
+  opacity: 1;
+  animation: none;
 }
 
 .hero-title p {
@@ -126,8 +126,8 @@ body {
   letter-spacing: 6px;
   color: rgba(232,220,200,0.84);
 
-  opacity: 0;
-  animation: softAppear 2s ease forwards;
+  opacity: 1;
+  animation: none;
   animation-delay: 4.2s;
 }
 
