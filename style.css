@@ -122,8 +122,8 @@ body {
   font-weight: 400;
   color: rgba(232,220,200,0.84);
 
-  opacity: 1;
-  animation: none;
+  opacity: 0;
+animation: weldingTitle 4.8s ease forwards;
 }
 
 .hero-title p {
@@ -132,9 +132,9 @@ body {
   letter-spacing: 6px;
   color: rgba(232,220,200,0.84);
 
-  opacity: 1;
-  animation: none;
-  animation-delay: 4.2s;
+  opacity: 0;
+animation: softAppear 2s ease forwards;
+animation-delay: 4.2s;
 }
 
 .menu {
@@ -148,8 +148,9 @@ body {
   flex-direction: column;
   gap: 34px;
 
-  opacity: 1;
-  animation: none;
+  opacity: 0;
+animation: softAppear 2s ease forwards;
+animation-delay: 5s;
 }
 
 
