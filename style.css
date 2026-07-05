@@ -66,6 +66,8 @@ body {
 
   object-fit: cover;
 
+  z-index: 1;
+
 }
 
 
@@ -78,6 +80,8 @@ body {
   position: absolute;
 
   inset: 0;
+
+  z-index: 2;
 
   background:
     linear-gradient(
@@ -102,6 +106,8 @@ body {
   top: 42%;
 
   transform: translateY(-50%);
+
+  z-index: 3;
 
 }
 
@@ -133,13 +139,14 @@ body {
 
 .menu {
   position: absolute;
+  z-index: 3;
   right: 7%;
   top: 12%;
   display: flex;
   flex-direction: column;
   gap: 34px;
 
-  opacity: 0;
+  opacity: 1;
   animation: softAppear 2s ease forwards;
   animation-delay: 5s;
 }
