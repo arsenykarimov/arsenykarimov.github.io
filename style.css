@@ -1,12 +1,17 @@
 @font-face {
   font-family: 'Circle Contrast';
   src: url('fonts/circle.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Evolventa';
   src: url('fonts/evolventa.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
+
 * {
   box-sizing: border-box;
 }
