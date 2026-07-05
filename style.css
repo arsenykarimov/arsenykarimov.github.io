@@ -25,7 +25,7 @@ body {
 
   color: #e8dcc8;
 
-  font-family: Arial, sans-serif;
+  font-family: 'Evolventa', sans-serif;
 
 }
 
@@ -105,6 +105,8 @@ body {
 
 .hero-title h1 {
 
+  font-family: 'Circle Contrast', serif;
+  
   margin: 0;
 
 
