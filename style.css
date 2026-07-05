@@ -1,1 +1,174 @@
+* {
+  box-sizing: border-box;
+}
 
+
+html,
+body {
+
+  margin: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: #000;
+
+  color: #e8dcc8;
+
+  font-family: Arial, sans-serif;
+
+}
+
+
+
+/* MAIN SCREEN */
+
+
+.hero {
+
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+}
+
+
+
+/* VIDEO */
+
+
+.hero-bg {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+
+
+/* CINEMA DARKNESS */
+
+
+.overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.65),
+      rgba(0,0,0,0.20),
+      rgba(0,0,0,0.55)
+    );
+
+}
+
+
+
+/* NAME */
+
+
+.hero-title {
+
+  position: absolute;
+
+  left: 6%;
+  top: 42%;
+
+  transform: translateY(-50%);
+
+}
+
+
+
+.hero-title h1 {
+
+  margin: 0;
+
+
+  font-size: 48px;
+
+  line-height: 0.85;
+
+  letter-spacing: 31px;
+
+  font-weight: 300;
+
+
+  color: rgba(232,220,200,0.84);
+
+}
+
+
+
+/* DIRECTOR OF PHOTOGRAPHY */
+
+
+.hero-title p {
+
+  margin-top: 24px;
+
+
+  font-size: 15.7px;
+
+  letter-spacing: 6px;
+
+
+  color: rgba(232,220,200,0.84);
+
+}
+
+
+
+/* MENU */
+
+
+.menu {
+
+  position: absolute;
+
+
+  right: 7%;
+
+  top: 12%;
+
+
+  display: flex;
+
+  flex-direction: column;
+
+
+  gap: 34px;
+
+}
+
+
+
+.menu a {
+
+
+  text-decoration: none;
+
+
+  font-size: 13px;
+
+
+  letter-spacing: 5px;
+
+
+  color: rgba(232,220,200,0.84);
+
+
+}
