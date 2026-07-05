@@ -171,3 +171,64 @@ animation-delay: 5s;
 
 
 }
+
+@keyframes weldingTitle {
+  0% {
+    opacity: 0;
+    color: rgba(232,220,200,0.04);
+    text-shadow: none;
+  }
+
+  10% {
+    opacity: 0.18;
+    text-shadow: 0 0 18px rgba(150,190,255,0.35);
+  }
+
+  16% {
+    opacity: 0.04;
+  }
+
+  28% {
+    opacity: 0.62;
+    text-shadow: 0 0 26px rgba(150,190,255,0.32);
+  }
+
+  36% {
+    opacity: 0.14;
+  }
+
+  50% {
+    opacity: 0.82;
+    text-shadow: 0 0 16px rgba(232,220,200,0.25);
+  }
+
+  60% {
+    opacity: 0.38;
+  }
+
+  74% {
+    opacity: 1;
+  }
+
+  82% {
+    opacity: 0.72;
+  }
+
+  100% {
+    opacity: 1;
+    color: rgba(232,220,200,0.84);
+    text-shadow: 0 0 6px rgba(232,220,200,0.12);
+  }
+}
+
+@keyframes softAppear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
