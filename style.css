@@ -16,73 +16,37 @@
   box-sizing: border-box;
 }
 
-
 html,
 body {
-
   margin: 0;
-
   width: 100%;
   height: 100%;
-
   background: #000;
-
   color: #e8dcc8;
-
   font-family: 'Evolventa', sans-serif;
-
 }
-
-
-
-/* MAIN SCREEN */
-
 
 .hero {
-
   position: relative;
-
   width: 100vw;
   height: 100vh;
-
   overflow: hidden;
-
 }
-
-
-
-/* VIDEO */
-
 
 .hero-bg {
-
   position: absolute;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   z-index: 1;
-
 }
 
-
-
-/* CINEMA DARKNESS */
-
-
 .overlay {
-
   position: absolute;
-
   inset: 0;
-
   z-index: 2;
-
   background:
     linear-gradient(
       to right,
@@ -90,28 +54,15 @@ body {
       rgba(0,0,0,0.20),
       rgba(0,0,0,0.55)
     );
-
 }
-
-
-
-/* NAME */
-
 
 .hero-title {
-
   position: absolute;
-
   left: 6%;
   top: 42%;
-
   transform: translateY(-50%);
-
   z-index: 3;
-
 }
-
-
 
 .hero-title h1 {
   font-family: 'Circle Contrast', serif;
@@ -122,8 +73,8 @@ body {
   font-weight: 400;
   color: rgba(232,220,200,0.84);
 
-  opacity: 0;
-animation: weldingTitle 4.8s ease forwards;
+  opacity: 1;
+  animation: weldingTitle 4.8s ease forwards;
 }
 
 .hero-title p {
@@ -132,44 +83,30 @@ animation: weldingTitle 4.8s ease forwards;
   letter-spacing: 6px;
   color: rgba(232,220,200,0.84);
 
-  opacity: 0;
-animation: softAppear 2s ease forwards;
-animation-delay: 4.2s;
+  opacity: 1;
+  animation: softAppear 2s ease forwards;
+  animation-delay: 4.2s;
 }
 
 .menu {
   position: absolute;
   z-index: 3;
-
   right: 7%;
   top: 12%;
-
   display: flex;
   flex-direction: column;
   gap: 34px;
 
-  opacity: 0;
-animation: softAppear 2s ease forwards;
-animation-delay: 5s;
+  opacity: 1;
+  animation: softAppear 2s ease forwards;
+  animation-delay: 5s;
 }
 
-
-
 .menu a {
-
-
   text-decoration: none;
-
-
   font-size: 13px;
-
-
   letter-spacing: 5px;
-
-
   color: rgba(232,220,200,0.84);
-
-
 }
 
 @keyframes weldingTitle {
