@@ -108,66 +108,40 @@ body {
 
 
 .hero-title h1 {
-
   font-family: 'Circle Contrast', serif;
-  
   margin: 0;
-
-
   font-size: 48px;
-
   line-height: 0.85;
-
   letter-spacing: 31px;
-
   font-weight: 400;
-
-
   color: rgba(232,220,200,0.84);
 
+  opacity: 0;
+  animation: weldingTitle 4.8s ease forwards;
 }
-
-
-
-/* DIRECTOR OF PHOTOGRAPHY */
-
 
 .hero-title p {
-
   margin-top: 24px;
-
-
   font-size: 15.7px;
-
   letter-spacing: 6px;
-
-
   color: rgba(232,220,200,0.84);
 
+  opacity: 0;
+  animation: softAppear 2s ease forwards;
+  animation-delay: 4.2s;
 }
 
-
-
-/* MENU */
-
-
 .menu {
-
   position: absolute;
-
-
   right: 7%;
-
   top: 12%;
-
-
   display: flex;
-
   flex-direction: column;
-
-
   gap: 34px;
 
+  opacity: 0;
+  animation: softAppear 2s ease forwards;
+  animation-delay: 5s;
 }
 
 
