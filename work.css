@@ -416,3 +416,10 @@
 .work-menu-active .work-dim {
   background: rgba(0,0,0,0.82);
 }
+
+/* HIDE MENU WHILE TRAILER IS OPEN */
+
+.work-page.player-open .work-menu-button {
+  opacity: 0;
+  pointer-events: none;
+}
