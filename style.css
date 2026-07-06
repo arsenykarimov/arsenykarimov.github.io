@@ -255,3 +255,47 @@ body {
   }
 }
 
+@keyframes letterPulse {
+  0% {
+    opacity: 0;
+    text-shadow: none;
+    color: rgba(232,220,200,0.03);
+  }
+
+  10% {
+    opacity: 0.25;
+    text-shadow: 0 0 10px rgba(150,190,255,0.20);
+  }
+
+  18% {
+    opacity: 0.05;
+  }
+
+  30% {
+    opacity: 0.75;
+    text-shadow: 0 0 18px rgba(150,190,255,0.30);
+  }
+
+  42% {
+    opacity: 0.18;
+  }
+
+  55% {
+    opacity: 0.9;
+    text-shadow: 0 0 14px rgba(232,220,200,0.22);
+  }
+
+  68% {
+    opacity: 0.45;
+  }
+
+  82% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    color: rgba(232,220,200,0.84);
+    text-shadow: 0 0 6px rgba(232,220,200,0.10);
+  }
+}
