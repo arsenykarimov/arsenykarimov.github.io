@@ -13,14 +13,13 @@ const arrowLeft = document.querySelector('.work-arrow-left');
 const arrowRight = document.querySelector('.work-arrow-right');
 const workViewer = document.querySelector('.work-viewer');
 
-let currentProject = 0;
-let previewPaused = false;
-let playVisible = false;
 const workMenuButton = document.querySelector('.work-menu-button');
 const workMenuOverlay = document.querySelector('.work-menu-overlay');
 
+let currentProject = 0;
+let previewPaused = false;
+let playVisible = false;
 let workMenuOpen = false;
-
 
 function loadProject(index) {
   const project = projects[index];
@@ -47,8 +46,9 @@ function loadProject(index) {
   playVisible = false;
 }
 
-
 function showProject(direction) {
+  closeWorkMenu();
+
   document.body.classList.add('work-flash');
 
   trailerVideo.pause();
@@ -61,52 +61,6 @@ function showProject(direction) {
       currentProject = (currentProject - 1 + projects.length) % projects.length;
     }
 
-function openWorkMenu() {
-  document.body.classList.add('work-menu-active');
-  workMenuOpen = true;
-}
-
-function closeWorkMenu() {
-  document.body.classList.remove('work-menu-active');
-  workMenuOpen = false;
-}
-
-workMenuButton.addEventListener('click', () => {
-  if (workMenuOpen) {
-    closeWorkMenu();
-  } else {
-    openWorkMenu();
-  }
-});
-
-workMenuOverlay.addEventListener('click', (event) => {
-  if (!event.target.closest('.work-menu-links')) {
-    closeWorkMenu();
-  }
-});
-function openWorkMenu() {
-  document.body.classList.add('work-menu-active');
-  workMenuOpen = true;
-}
-
-function closeWorkMenu() {
-  document.body.classList.remove('work-menu-active');
-  workMenuOpen = false;
-}
-
-workMenuButton.addEventListener('click', () => {
-  if (workMenuOpen) {
-    closeWorkMenu();
-  } else {
-    openWorkMenu();
-  }
-});
-
-workMenuOverlay.addEventListener('click', (event) => {
-  if (!event.target.closest('.work-menu-links')) {
-    closeWorkMenu();
-  }
-});
     loadProject(currentProject);
   }, 180);
 
@@ -115,17 +69,36 @@ workMenuOverlay.addEventListener('click', (event) => {
   }, 420);
 }
 
+function openWorkMenu() {
+  titleBlock.classList.add('hidden');
+  playButton.classList.remove('visible');
+
+  document.body.classList.add('work-menu-active');
+
+  previewPaused = false;
+  playVisible = false;
+  workMenuOpen = true;
+}
+
+function closeWorkMenu() {
+  document.body.classList.remove('work-menu-active');
+
+  titleBlock.classList.remove('hidden');
+
+  workMenuOpen = false;
+}
 
 workViewer.addEventListener('click', (event) => {
   if (
-  event.target.closest('.work-arrow') ||
-  event.target.closest('.work-play') ||
-  event.target.closest('.work-player') ||
-  event.target.closest('.work-menu-button') ||
-  event.target.closest('.work-menu-overlay')
-) {
-  return;
-}
+    workMenuOpen ||
+    event.target.closest('.work-arrow') ||
+    event.target.closest('.work-play') ||
+    event.target.closest('.work-player') ||
+    event.target.closest('.work-menu-button') ||
+    event.target.closest('.work-menu-overlay')
+  ) {
+    return;
+  }
 
   if (!previewPaused) {
     loopVideo.pause();
@@ -150,7 +123,6 @@ workViewer.addEventListener('click', (event) => {
   }
 });
 
-
 playButton.addEventListener('click', () => {
   player.classList.add('visible');
 
@@ -158,21 +130,31 @@ playButton.addEventListener('click', () => {
   trailerVideo.play().catch(() => {});
 });
 
-
 closeButton.addEventListener('click', () => {
   trailerVideo.pause();
   player.classList.remove('visible');
 });
 
-
 arrowRight.addEventListener('click', () => {
   showProject('next');
 });
-
 
 arrowLeft.addEventListener('click', () => {
   showProject('prev');
 });
 
+workMenuButton.addEventListener('click', () => {
+  if (workMenuOpen) {
+    closeWorkMenu();
+  } else {
+    openWorkMenu();
+  }
+});
+
+workMenuOverlay.addEventListener('click', (event) => {
+  if (!event.target.closest('.work-menu-links')) {
+    closeWorkMenu();
+  }
+});
 
 loadProject(currentProject);
