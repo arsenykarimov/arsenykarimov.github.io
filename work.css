@@ -300,3 +300,119 @@
     z-index:21;
 
 }
+
+/* ---------- FULLSCREEN WORK MENU ---------- */
+
+.work-menu-button {
+  position: fixed;
+  right: 7%;
+  top: 8%;
+  z-index: 31;
+
+  width: 82px;
+  height: 68px;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.work-menu-button span {
+  position: absolute;
+  right: 0;
+
+  display: block;
+
+  width: 42px;
+  height: 1px;
+
+  background: color-mix(in srgb, var(--work-accent) 84%, transparent);
+
+  transition: opacity 0.8s ease;
+}
+
+.work-menu-button span:nth-child(1) {
+  top: 0;
+}
+
+.work-menu-button span:nth-child(2) {
+  top: 13px;
+}
+
+.work-menu-button span:nth-child(3) {
+  top: 26px;
+}
+
+.work-menu-active .work-menu-button span:nth-child(1),
+.work-menu-active .work-menu-button span:nth-child(3) {
+  opacity: 0;
+}
+
+.work-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.78);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.7s ease;
+}
+
+.work-menu-active .work-menu-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.work-menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 34px;
+}
+
+.work-menu-links a {
+  text-decoration: none;
+
+  font-family: "Evolventa", sans-serif;
+  font-size: 15px;
+  letter-spacing: 5px;
+
+  color: color-mix(in srgb, var(--work-accent) 84%, transparent);
+
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    filter 0.7s ease;
+}
+
+.work-menu-active .work-menu-links a {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.work-menu-active .work-title,
+.work-menu-active .work-play,
+.work-menu-active .work-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.work-menu-active .work-dim {
+  background: rgba(0,0,0,0.82);
+}
