@@ -148,12 +148,14 @@ body {
 /* THREE LINES */
 
 .menu-icon {
-  width: 42px;
-  height: 28px;
+  width: 82px;
+  height: 68px;
+
   position: relative;
 
   cursor: pointer;
   pointer-events: auto;
+  touch-action: manipulation;
 
   opacity: 0;
 
