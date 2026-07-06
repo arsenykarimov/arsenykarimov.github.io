@@ -170,8 +170,6 @@ body {
 
 .menu-icon span:nth-child(1) {
   top: 0;
-  animation: lineFade 1.4s ease forwards;
-  animation-delay: 6.2s;
 }
 
 .menu-icon span:nth-child(2) {
@@ -180,8 +178,25 @@ body {
 
 .menu-icon span:nth-child(3) {
   top: 26px;
-  animation: lineFade 1.4s ease forwards;
-  animation-delay: 6.2s;
+}
+
+.menu-icon span {
+  transition: opacity 1.2s ease;
+}
+
+.menu.menu-opened .menu-icon span:nth-child(1),
+.menu.menu-opened .menu-icon span:nth-child(3) {
+  opacity: 0;
+}
+
+.menu.menu-opened .menu-icon span:nth-child(2) {
+  opacity: 1;
+}
+
+.menu.menu-closed .menu-icon span:nth-child(1),
+.menu.menu-closed .menu-icon span:nth-child(2),
+.menu.menu-closed .menu-icon span:nth-child(3) {
+  opacity: 1;
 }
 
 .menu-items {
