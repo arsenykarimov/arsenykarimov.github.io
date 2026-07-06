@@ -15,6 +15,7 @@ const workViewer = document.querySelector('.work-viewer');
 
 let currentProject = 0;
 let previewPaused = false;
+let playVisible = false;
 
 
 function loadProject(index) {
@@ -39,6 +40,7 @@ function loadProject(index) {
   playButton.classList.remove('visible');
 
   previewPaused = false;
+  playVisible = false;
 }
 
 
