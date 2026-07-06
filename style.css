@@ -156,7 +156,7 @@ body {
 
   opacity: 0;
   animation: menuIconAppear 2s ease forwards;
-  animation-delay: 5s;
+  animation-delay: 3s;
 }
 
 .menu-icon span {
