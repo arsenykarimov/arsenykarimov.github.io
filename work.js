@@ -16,6 +16,10 @@ const workViewer = document.querySelector('.work-viewer');
 let currentProject = 0;
 let previewPaused = false;
 let playVisible = false;
+const workMenuButton = document.querySelector('.work-menu-button');
+const workMenuOverlay = document.querySelector('.work-menu-overlay');
+
+let workMenuOpen = false;
 
 
 function loadProject(index) {
