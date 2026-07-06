@@ -68,7 +68,6 @@ function showProject(direction) {
 
 workViewer.addEventListener('click', (event) => {
   if (
-    previewPaused ||
     event.target.closest('.work-arrow') ||
     event.target.closest('.work-play') ||
     event.target.closest('.work-player')
@@ -76,12 +75,27 @@ workViewer.addEventListener('click', (event) => {
     return;
   }
 
-  loopVideo.pause();
+  if (!previewPaused) {
+    loopVideo.pause();
 
-  titleBlock.classList.add('hidden');
-  playButton.classList.add('visible');
+    titleBlock.classList.add('hidden');
+    playButton.classList.add('visible');
 
-  previewPaused = true;
+    previewPaused = true;
+    playVisible = true;
+
+    return;
+  }
+
+  if (playVisible) {
+    playButton.classList.remove('visible');
+    titleBlock.classList.remove('hidden');
+
+    loopVideo.play().catch(() => {});
+
+    previewPaused = false;
+    playVisible = false;
+  }
 });
 
 
