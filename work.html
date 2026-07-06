@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Work | Arseny Karimov</title>
+
+  <link rel="stylesheet" href="style.css?v=10">
+</head>
+
+<body class="work-page">
+
+  <section class="work-viewer">
+
+    <video 
+      class="work-loop"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    >
+      <source src="video/work/retrograde-loop.mp4" type="video/mp4">
+    </video>
+
+    <div class="work-dim"></div>
+
+    <div class="work-title">
+      <h1>RETROGRADE</h1>
+      <p>SHORTFILM</p>
+    </div>
+
+    <button class="work-arrow work-arrow-left" type="button" aria-label="Previous project"></button>
+    <button class="work-arrow work-arrow-right" type="button" aria-label="Next project"></button>
+
+    <button class="work-play" type="button" aria-label="Play trailer">
+      <span></span>
+    </button>
+
+  </section>
+
+  <div class="work-player">
+    <button class="work-close" type="button" aria-label="Close player">×</button>
+
+    <video class="trailer-video" controls playsinline>
+      <source src="video/work/retrograde-trailer.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script src="work.js?v=1"></script>
+
+</body>
+
+</html>
