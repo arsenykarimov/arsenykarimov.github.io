@@ -152,6 +152,9 @@ body {
   height: 28px;
   position: relative;
 
+  cursor: pointer;
+  pointer-events: auto;
+
   opacity: 0;
 
   animation: menuIconAppear 2s ease forwards;
