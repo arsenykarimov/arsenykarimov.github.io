@@ -336,3 +336,103 @@ body {
     text-shadow: 0 0 6px rgba(232,220,200,0.10);
   }
 }
+
+.menu-icon {
+
+  cursor: pointer;
+
+}
+
+.menu.menu-opened .menu-items a {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+  filter: blur(0);
+
+}
+
+.menu.menu-closed .menu-items a {
+
+  opacity: 0;
+
+  transform: translateY(-10px);
+
+  filter: blur(4px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    filter 0.8s ease;
+
+}
+
+
+/* REVERSE TITLES */
+
+
+.menu.menu-closed .menu-items a:nth-child(6) {
+  transition-delay: 0s;
+}
+
+.menu.menu-closed .menu-items a:nth-child(5) {
+  transition-delay: 0.15s;
+}
+
+.menu.menu-closed .menu-items a:nth-child(4) {
+  transition-delay: 0.30s;
+}
+
+.menu.menu-closed .menu-items a:nth-child(3) {
+  transition-delay: 0.45s;
+}
+
+.menu.menu-closed .menu-items a:nth-child(2) {
+  transition-delay: 0.60s;
+}
+
+.menu.menu-closed .menu-items a:nth-child(1) {
+  transition-delay: 0.75s;
+}
+
+.menu.menu-opened .menu-items a {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+  filter: blur(0);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    filter 0.8s ease;
+
+}
+
+
+.menu.menu-opened .menu-items a:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.menu.menu-opened .menu-items a:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.menu.menu-opened .menu-items a:nth-child(3) {
+  transition-delay: 0.30s;
+}
+
+.menu.menu-opened .menu-items a:nth-child(4) {
+  transition-delay: 0.45s;
+}
+
+.menu.menu-opened .menu-items a:nth-child(5) {
+  transition-delay: 0.60s;
+}
+
+.menu.menu-opened .menu-items a:nth-child(6) {
+  transition-delay: 0.75s;
+}
+
