@@ -84,6 +84,29 @@ workMenuOverlay.addEventListener('click', (event) => {
     closeWorkMenu();
   }
 });
+function openWorkMenu() {
+  document.body.classList.add('work-menu-active');
+  workMenuOpen = true;
+}
+
+function closeWorkMenu() {
+  document.body.classList.remove('work-menu-active');
+  workMenuOpen = false;
+}
+
+workMenuButton.addEventListener('click', () => {
+  if (workMenuOpen) {
+    closeWorkMenu();
+  } else {
+    openWorkMenu();
+  }
+});
+
+workMenuOverlay.addEventListener('click', (event) => {
+  if (!event.target.closest('.work-menu-links')) {
+    closeWorkMenu();
+  }
+});
     loadProject(currentProject);
   }, 180);
 
