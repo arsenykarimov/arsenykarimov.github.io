@@ -149,6 +149,11 @@ body {
   cursor: pointer;
   pointer-events: auto;
   touch-action: manipulation;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+
   opacity: 0;
   animation: menuIconAppear 2s ease forwards;
   animation-delay: 5s;
