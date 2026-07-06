@@ -124,6 +124,9 @@ workViewer.addEventListener('click', (event) => {
 });
 
 playButton.addEventListener('click', () => {
+  closeWorkMenu();
+
+  document.body.classList.add('player-open');
   player.classList.add('visible');
 
   trailerVideo.currentTime = 0;
