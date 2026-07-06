@@ -72,12 +72,14 @@ function showProject(direction) {
 
 workViewer.addEventListener('click', (event) => {
   if (
-    event.target.closest('.work-arrow') ||
-    event.target.closest('.work-play') ||
-    event.target.closest('.work-player')
-  ) {
-    return;
-  }
+  event.target.closest('.work-arrow') ||
+  event.target.closest('.work-play') ||
+  event.target.closest('.work-player') ||
+  event.target.closest('.work-menu-button') ||
+  event.target.closest('.work-menu-overlay')
+) {
+  return;
+}
 
   if (!previewPaused) {
     loopVideo.pause();
