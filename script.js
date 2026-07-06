@@ -7,7 +7,7 @@ setTimeout(() => {
   menu.classList.add('menu-opened');
   menu.classList.remove('menu-closed');
   opened = true;
-}, 7200);
+}, 4200);
 
 menuIcon.addEventListener('click', () => {
   if (opened) {
