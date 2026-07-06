@@ -149,19 +149,19 @@ body {
 
 .menu-icon {
   width: 42px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  height: 28px;
+  position: relative;
 
   opacity: 0;
 
-  animation: menuBirth 1.5s ease forwards;
+  animation: menuIconAppear 2s ease forwards;
   animation-delay: 5s;
 }
 
 
 .menu-icon span {
+  position: absolute;
+  right: 0;
 
   display: block;
 
@@ -169,6 +169,53 @@ body {
   height: 1px;
 
   background: rgba(232,220,200,0.84);
+
+}
+
+
+.menu-icon span:nth-child(1) {
+  top: 0;
+  animation: lineFade 1.4s ease forwards;
+  animation-delay: 6.2s;
+}
+
+
+.menu-icon span:nth-child(2) {
+  top: 13px;
+}
+
+
+.menu-icon span:nth-child(3) {
+  top: 26px;
+  animation: lineFade 1.4s ease forwards;
+  animation-delay: 6.2s;
+}
+
+
+@keyframes menuIconAppear {
+
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+}
+
+
+@keyframes lineFade {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 
 }
 
