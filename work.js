@@ -1,57 +1,110 @@
 const loopVideo = document.querySelector('.work-loop');
+const trailerVideo = document.querySelector('.trailer-video');
 
-const title = document.querySelector('.work-title');
+const titleBlock = document.querySelector('.work-title');
+const titleText = document.querySelector('#project-title');
+const subtitleText = document.querySelector('#project-subtitle');
+
 const playButton = document.querySelector('.work-play');
-
 const player = document.querySelector('.work-player');
-const trailer = document.querySelector('.trailer-video');
 const closeButton = document.querySelector('.work-close');
 
+const arrowLeft = document.querySelector('.work-arrow-left');
+const arrowRight = document.querySelector('.work-arrow-right');
+const workViewer = document.querySelector('.work-viewer');
 
-let pausedPreview = false;
+let currentProject = 0;
+let previewPaused = false;
 
 
-// первый клик по кадру:
-// останавливаем loop и показываем play
+function loadProject(index) {
+  const project = projects[index];
 
-document.querySelector('.work-viewer').addEventListener('click', (e) => {
+  titleText.textContent = project.title;
+  subtitleText.textContent = project.subtitle;
 
+  document.documentElement.style.setProperty('--work-accent', project.accent);
+
+  loopVideo.src = project.loop;
+  loopVideo.load();
+  loopVideo.play().catch(() => {});
+
+  trailerVideo.pause();
+  trailerVideo.src = project.trailer;
+  trailerVideo.load();
+
+  player.classList.remove('visible');
+
+  titleBlock.classList.remove('hidden');
+  playButton.classList.remove('visible');
+
+  previewPaused = false;
+}
+
+
+function showProject(direction) {
+  document.body.classList.add('work-flash');
+
+  trailerVideo.pause();
+  player.classList.remove('visible');
+
+  setTimeout(() => {
+    if (direction === 'next') {
+      currentProject = (currentProject + 1) % projects.length;
+    } else {
+      currentProject = (currentProject - 1 + projects.length) % projects.length;
+    }
+
+    loadProject(currentProject);
+  }, 180);
+
+  setTimeout(() => {
+    document.body.classList.remove('work-flash');
+  }, 420);
+}
+
+
+workViewer.addEventListener('click', (event) => {
   if (
-    pausedPreview ||
-    e.target.closest('.work-arrow') ||
-    e.target.closest('.work-play')
+    previewPaused ||
+    event.target.closest('.work-arrow') ||
+    event.target.closest('.work-play') ||
+    event.target.closest('.work-player')
   ) {
     return;
   }
 
   loopVideo.pause();
 
-  title.classList.add('hidden');
+  titleBlock.classList.add('hidden');
   playButton.classList.add('visible');
 
-  pausedPreview = true;
-
+  previewPaused = true;
 });
 
-
-// открыть трейлер
 
 playButton.addEventListener('click', () => {
-
   player.classList.add('visible');
 
-  trailer.currentTime = 0;
-  trailer.play();
-
+  trailerVideo.currentTime = 0;
+  trailerVideo.play().catch(() => {});
 });
 
-
-// закрыть трейлер
 
 closeButton.addEventListener('click', () => {
-
-  trailer.pause();
-
+  trailerVideo.pause();
   player.classList.remove('visible');
-
 });
+
+
+arrowRight.addEventListener('click', () => {
+  showProject('next');
+});
+
+
+arrowLeft.addEventListener('click', () => {
+  showProject('prev');
+});
+
+
+loadProject(currentProject);
