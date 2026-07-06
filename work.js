@@ -135,7 +135,9 @@ playButton.addEventListener('click', () => {
 
 closeButton.addEventListener('click', () => {
   trailerVideo.pause();
+
   player.classList.remove('visible');
+  document.body.classList.remove('player-open');
 });
 
 arrowRight.addEventListener('click', () => {
