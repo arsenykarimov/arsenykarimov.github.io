@@ -135,22 +135,114 @@ body {
 .menu {
   position: absolute;
   z-index: 3;
+
   right: 7%;
-  top: 12%;
+  top: 8%;
+
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  align-items: flex-end;
+}
 
-  opacity: 1;
-  animation: softAppear 2s ease forwards;
+
+/* THREE LINES */
+
+.menu-icon {
+  width: 42px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+
+  animation: menuBirth 1.5s ease forwards;
   animation-delay: 5s;
 }
 
-.menu a {
+
+.menu-icon span {
+
+  display: block;
+
+  width: 42px;
+  height: 1px;
+
+  background: rgba(232,220,200,0.84);
+
+}
+
+
+/* MENU TEXT */
+
+.menu-items {
+
+  margin-top: 42px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 34px;
+
+  align-items: flex-end;
+
+}
+
+
+.menu-items a {
+
   text-decoration: none;
+
   font-size: 13px;
+
   letter-spacing: 5px;
+
   color: rgba(232,220,200,0.84);
+
+  opacity: 0;
+
+  animation: menuReveal 2s ease forwards;
+
+}
+
+
+.menu-items a:nth-child(1) { animation-delay: 6.0s; }
+.menu-items a:nth-child(2) { animation-delay: 6.15s; }
+.menu-items a:nth-child(3) { animation-delay: 6.3s; }
+.menu-items a:nth-child(4) { animation-delay: 6.45s; }
+.menu-items a:nth-child(5) { animation-delay: 6.6s; }
+.menu-items a:nth-child(6) { animation-delay: 6.75s; }
+
+
+@keyframes menuBirth {
+
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes menuReveal {
+
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
 }
 
 @keyframes letterPulse {
