@@ -424,9 +424,10 @@
   }
 
   .work-title h1 {
-    font-size: 22px;
-    letter-spacing: 16px;
-  }
+  font-size: 22px;
+  letter-spacing: 16px;
+  padding-left: 16px;
+}
 
   .work-title p {
     font-size: 14px;
