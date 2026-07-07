@@ -140,7 +140,6 @@ workViewer.addEventListener('click', (event) => {
   }
 
   if (!previewPaused) {
-    loopVideo.pause();
 
     titleBlock.classList.add('hidden');
     playButton.classList.add('visible');
