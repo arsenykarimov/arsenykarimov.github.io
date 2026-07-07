@@ -25,7 +25,7 @@ const projects = [
     loop: "video/paraneba-loop.mp4",
 
     trailer: ""
-  }
+  },
 
 {
   id: "anikushin",
