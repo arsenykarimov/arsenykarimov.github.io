@@ -7,19 +7,58 @@
   overflow: hidden;
 }
 
-.work-page::after {
+.work-viewer::after {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
+
   background: #FFFCEB;
+
   opacity: 0;
+
   pointer-events: none;
-  z-index: 50;
-  transition: opacity .18s ease;
+
+  z-index: 2;
+
+  transition: opacity .08s ease-in;
 }
 
-.work-page.work-flash::after {
+.work-page.work-flash .work-viewer::after {
   opacity: 1;
+
+  transition: opacity .04s linear;
+}
+
+/* ---------- LAYERS ---------- */
+
+.work-loop {
+
+  z-index: 1;
+
+}
+
+.work-dim {
+
+  z-index: 3;
+
+}
+
+.work-title {
+
+  z-index: 4;
+
+}
+
+.work-play {
+
+  z-index: 5;
+
+}
+
+.work-arrow {
+
+  z-index: 6;
+
 }
 
 
