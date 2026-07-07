@@ -176,6 +176,12 @@ closeButton.addEventListener('click', () => {
 
   player.classList.remove('visible');
   document.body.classList.remove('player-open');
+
+  playButton.classList.remove('visible');
+  titleBlock.classList.remove('hidden');
+
+  previewPaused = false;
+  playVisible = false;
 });
 
 arrowRight.addEventListener('click', () => {
