@@ -27,4 +27,17 @@ const projects = [
     trailer: ""
   }
 
+{
+  id: "anikushin",
+
+  title: "ANIKUSHIN\nMUSEUM",
+  subtitle: "EXHIBITION",
+
+  accent: "#A8E5FF",
+
+  loop: "video/anikushin-loop.mp4",
+
+  trailer: ""
+}
+
 ];
