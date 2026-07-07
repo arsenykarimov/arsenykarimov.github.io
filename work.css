@@ -12,21 +12,19 @@
   position: absolute;
   inset: 0;
 
-  background: #FFFCEB;
+  background: rgba(220, 220, 200, 0.14);
 
   opacity: 0;
 
   pointer-events: none;
 
-  z-index: 2;
+  z-index: 4;
 
-  transition: opacity .08s ease-in;
+  transition: opacity 0.1s ease;
 }
 
 .work-page.work-flash .work-viewer::after {
   opacity: 1;
-
-  transition: opacity .04s linear;
 }
 
 /* ---------- LAYERS ---------- */
@@ -44,21 +42,15 @@
 }
 
 .work-title {
-
-  z-index: 4;
-
+  z-index: 6;
 }
 
 .work-play {
-
-  z-index: 5;
-
+  z-index: 7;
 }
 
 .work-arrow {
-
-  z-index: 6;
-
+  z-index: 7;
 }
 
 
@@ -69,6 +61,15 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+
+  transition:
+    filter 0.2s ease;
+}
+
+.work-page.work-flash .work-viewer {
+  filter:
+    contrast(.78)
+    brightness(1.05);
 }
 
 .work-loop {
