@@ -11,6 +11,20 @@ const projects = [
     loop: "video/retrograde-loop.mp4",
 
     trailer: "https://pub-e6c268da1b654b929cf0eb9763a0a6e1.r2.dev/Trailers/retrograde-trailer.mp4"
+  },
+
+
+  {
+    id: "paraneba",
+
+    title: "PARANEBA",
+    subtitle: "COMMERCIAL",
+
+    accent: "#DBFFA8",
+
+    loop: "video/paraneba-loop.mp4",
+
+    trailer: ""
   }
 
 ];
