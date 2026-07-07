@@ -319,3 +319,60 @@ body {
     text-shadow: 0 0 6px rgba(232,220,200,0.10);
   }
 }
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+  .hero-title {
+    left: 7%;
+    top: 43%;
+  }
+
+  .hero-title h1 {
+    font-size: 34px;
+    letter-spacing: 18px;
+    line-height: 0.9;
+  }
+
+  .hero-title p {
+    margin-top: 18px;
+    font-size: 11px;
+    letter-spacing: 3.5px;
+  }
+
+
+  /* MENU */
+
+  .menu {
+    right: 5%;
+    top: 5%;
+  }
+
+  .menu-icon {
+    width: 70px;
+    height: 60px;
+  }
+
+  .menu-icon span {
+    width: 36px;
+  }
+
+  .menu-items {
+    margin-top: 36px;
+    gap: 28px;
+  }
+
+  .menu-items a {
+    font-size: 12px;
+    letter-spacing: 4px;
+  }
+
+
+  /* VIDEO */
+
+  .hero-bg {
+    object-position: center center;
+  }
+
+}
