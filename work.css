@@ -423,3 +423,72 @@
   opacity: 0;
   pointer-events: none;
 }
+
+@media (max-width: 768px) {
+
+  .work-title {
+    top: 47%;
+  }
+
+  .work-title h1 {
+    font-size: 22px;
+    letter-spacing: 16px;
+  }
+
+  .work-title p {
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-top: 14px;
+  }
+
+  .work-play {
+    width: 76px;
+    height: 76px;
+  }
+
+  .work-play span {
+    left: 31px;
+    top: 23px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 23px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
+  }
+
+  .work-arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .work-arrow-left {
+    left: 5%;
+  }
+
+  .work-arrow-right {
+    right: 5%;
+  }
+
+  .trailer-video {
+    width: 94vw;
+    max-height: 80vh;
+  }
+
+  .work-close {
+    top: 3%;
+    right: 5%;
+    font-size: 34px;
+  }
+
+  .work-menu-button {
+    right: 5%;
+    top: 5%;
+  }
+
+  .work-menu-links {
+    gap: 30px;
+  }
+
+  .work-menu-links a {
+    font-size: 14px;
+    letter-spacing: 5px;
+  }
+}
