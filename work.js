@@ -20,6 +20,8 @@ let currentProject = 0;
 let previewPaused = false;
 let playVisible = false;
 let workMenuOpen = false;
+let touchStartX = 0;
+let touchStartY = 0;
 
 function loadProject(index) {
   const project = projects[index];
@@ -60,6 +62,43 @@ function showProject(direction) {
     } else {
       currentProject = (currentProject - 1 + projects.length) % projects.length;
     }
+
+workViewer.addEventListener('touchstart', (event) => {
+  touchStartX = event.changedTouches[0].screenX;
+  touchStartY = event.changedTouches[0].screenY;
+}, { passive: true });
+
+workViewer.addEventListener('touchend', (event) => {
+  const touchEndX = event.changedTouches[0].screenX;
+  const touchEndY = event.changedTouches[0].screenY;
+
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  if (Math.abs(diffX) < 60 && Math.abs(diffY) < 60) {
+    return;
+  }
+
+  if (Math.abs(diffY) > Math.abs(diffX)) {
+    if (diffY < -60 && workMenuOpen) {
+      closeWorkMenu();
+    }
+
+    return;
+  }
+
+  if (workMenuOpen || player.classList.contains('visible')) {
+    return;
+  }
+
+  if (diffX < -60) {
+    showProject('next');
+  }
+
+  if (diffX > 60) {
+    showProject('prev');
+  }
+}, { passive: true });
 
     loadProject(currentProject);
   }, 180);
