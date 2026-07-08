@@ -107,6 +107,8 @@
 
   object-fit: contain;
 
+  filter: invert(1);
+
   opacity: .84;
 }
 
