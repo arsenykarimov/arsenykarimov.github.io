@@ -59,6 +59,8 @@ function applyProject(index) {
   document.body.classList.remove('player-open');
 
   titleBlock.classList.remove('hidden');
+  titleBlock.classList.remove('switching');
+
   playButton.classList.remove('visible');
 
   previewPaused = false;
@@ -77,7 +79,21 @@ function loadFirstProject() {
 }
 
 
-л
+function showProject(direction) {
+  if (isSwitching) {
+    return;
+  }
+
+  isSwitching = true;
+
+  closeWorkMenu();
+
+  titleBlock.classList.remove('hidden');
+  titleBlock.classList.remove('switching');
+  playButton.classList.remove('visible');
+
+  previewPaused = false;
+  playVisible = false;
 
   const nextIndex =
     direction === 'next'
@@ -91,10 +107,6 @@ function loadFirstProject() {
 
   document.body.classList.add('work-transition');
   titleBlock.classList.add('switching');
-
-  playButton.classList.remove('visible');
-  previewPaused = false;
-  playVisible = false;
 
   setTimeout(() => {
     currentProject = nextIndex;
@@ -115,12 +127,11 @@ function loadFirstProject() {
 
     applyProject(currentProject);
 
-titleBlock.classList.add('switching');
-
-setTimeout(() => {
-  document.body.classList.remove('work-transition');
-  isSwitching = false;
-}, 260);
+    setTimeout(() => {
+      titleBlock.classList.remove('switching');
+      document.body.classList.remove('work-transition');
+      isSwitching = false;
+    }, 260);
 
   }, 100);
 }
@@ -164,6 +175,8 @@ workViewer.addEventListener('click', (event) => {
 
   if (!previewPaused) {
     titleBlock.classList.add('hidden');
+    titleBlock.classList.remove('switching');
+
     playButton.classList.add('visible');
 
     previewPaused = true;
@@ -173,16 +186,16 @@ workViewer.addEventListener('click', (event) => {
   }
 
   if (playVisible) {
-  playButton.classList.remove('visible');
+    playButton.classList.remove('visible');
 
-  titleBlock.classList.remove('hidden');
-  titleBlock.classList.remove('switching');
+    titleBlock.classList.remove('hidden');
+    titleBlock.classList.remove('switching');
 
-  previewPaused = false;
-  playVisible = false;
+    previewPaused = false;
+    playVisible = false;
 
-  return;
-}
+    return;
+  }
 });
 
 
@@ -204,7 +217,9 @@ closeButton.addEventListener('click', () => {
   document.body.classList.remove('player-open');
 
   playButton.classList.remove('visible');
+
   titleBlock.classList.remove('hidden');
+  titleBlock.classList.remove('switching');
 
   previewPaused = false;
   playVisible = false;
