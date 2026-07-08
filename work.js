@@ -132,7 +132,6 @@ setTimeout(() => {
   document.documentElement.style.setProperty('--current-accent', nextProject.accent);
 
   currentTitleBlock.classList.remove('cross-out');
-  nextTitleBlock.classList.remove('cross-in');
 }, 520);
 
   activePoster.classList.remove('active');
