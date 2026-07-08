@@ -153,6 +153,15 @@
 
   color: color-mix(in srgb, var(--work-accent) 84%, transparent);
 }
+.title-current h1,
+.title-current p {
+  color: color-mix(in srgb, var(--current-accent, var(--work-accent)) 84%, transparent);
+}
+
+.title-next h1,
+.title-next p {
+  color: color-mix(in srgb, var(--next-accent, var(--work-accent)) 84%, transparent);
+}
 
 
 /* PLAY */
