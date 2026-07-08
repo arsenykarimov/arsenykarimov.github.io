@@ -77,14 +77,7 @@ function loadFirstProject() {
 }
 
 
-function showProject(direction) {
-  if (isSwitching) {
-    return;
-  }
-
-  isSwitching = true;
-
-  closeWorkMenu();
+л
 
   const nextIndex =
     direction === 'next'
