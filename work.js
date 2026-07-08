@@ -124,6 +124,20 @@ document.body.classList.add('work-transition');
 setTimeout(() => {
   currentProject = nextIndex;
 
+  setTimeout(() => {
+    titleText.textContent = nextProject.title;
+    subtitleText.textContent = nextProject.subtitle;
+
+    document.documentElement.style.setProperty('--work-accent', nextProject.accent);
+    document.documentElement.style.setProperty('--current-accent', nextProject.accent);
+
+    currentTitleBlock.classList.remove('cross-out');
+    nextTitleBlock.classList.remove('cross-in');
+
+    nextTitleText.textContent = '';
+    nextSubtitleText.textContent = '';
+  }, 350);
+
   activePoster.classList.remove('active');
 hiddenPoster.classList.add('active');
 
@@ -137,7 +151,6 @@ setTimeout(() => {
 
 applyProject(currentProject);
     setTimeout(() => {
-      titleBlock.classList.remove('switching');
       document.body.classList.remove('work-transition');
       isSwitching = false;
     }, 260);
