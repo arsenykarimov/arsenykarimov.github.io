@@ -435,3 +435,46 @@ body {
   }
 
 }
+
+/* SMALL BRAND */
+
+.site-brand-small {
+  position: fixed;
+
+  left: 7%;
+  top: 8%;
+
+  z-index: 60;
+
+  text-decoration: none;
+
+  color: var(--work-accent, #F6FFAD);
+
+  font-family: "Circle Contrast", serif;
+
+  line-height: 1;
+
+  pointer-events: auto;
+}
+
+.site-brand-small span {
+  display: block;
+
+  font-size: 18.8px;
+  letter-spacing: 6px;
+
+  opacity: 0.5;
+}
+
+.site-brand-small small {
+  display: block;
+
+  margin-top: 4px;
+
+  font-family: "Evolventa", sans-serif;
+
+  font-size: 8.4px;
+  letter-spacing: 1.6px;
+
+  opacity: 0.28;
+}
