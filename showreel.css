@@ -141,6 +141,10 @@
   );
 }
 
+.showreel-play.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* MENU */
 
