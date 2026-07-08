@@ -102,12 +102,12 @@
 }
 
 .contact-icon {
-  width: 24px;
+  width: 22px;
+  height: 22px;
 
-  text-align: center;
+  object-fit: contain;
 
-  font-size: 22px;
-  line-height: 1;
+  opacity: .84;
 }
 
 .contact-email {
