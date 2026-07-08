@@ -153,7 +153,7 @@ applyProject(currentProject);
     setTimeout(() => {
       document.body.classList.remove('work-transition');
       isSwitching = false;
-    }, 260);
+    }, 420);
 
   }, 100);
 }
