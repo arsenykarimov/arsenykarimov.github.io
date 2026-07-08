@@ -128,7 +128,7 @@ setTimeout(() => {
   titleBlock.classList.remove('switching');
   document.body.classList.remove('work-transition');
   isSwitching = false;
-}, 120);
+}, 260);
 
   }, 100);
 }
