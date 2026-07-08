@@ -7,7 +7,7 @@ const menuButton = document.querySelector('.showreel-menu-button');
 const menuOverlay = document.querySelector('.showreel-menu-overlay');
 
 
-const showreelUrl = "";
+const showreelUrl = "https://pub-e6c268da1b654b929cf0eb9763a0a6e1.r2.dev/Trailers/showreel.mp4";
 
 
 function openPlayer() {
