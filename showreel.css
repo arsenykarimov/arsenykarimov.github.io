@@ -298,6 +298,12 @@
 
 @media (max-width: 768px) {
 
+  .showreel-title h1 {
+    font-size: 22px;
+    letter-spacing: 12px;
+    padding-left: 12px;
+  }
+
   .showreel-play {
     width: 76px;
     height: 76px;
@@ -320,6 +326,7 @@
     right: 5%;
     top: 5%;
   }
+
 }
 
 /* BRAND */
