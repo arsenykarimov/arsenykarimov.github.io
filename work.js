@@ -59,8 +59,7 @@ function applyProject(index) {
   document.body.classList.remove('player-open');
 
   titleBlock.classList.remove('hidden');
-  titleBlock.classList.remove('switching');
-
+  
   playButton.classList.remove('visible');
 
   previewPaused = false;
