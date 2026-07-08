@@ -113,20 +113,18 @@ function showProject(direction) {
 
     document.documentElement.style.setProperty('--work-accent', nextProject.accent);
 
-    titleText.textContent = nextProject.title;
-    subtitleText.textContent = nextProject.subtitle;
+activePoster.classList.remove('active');
+hiddenPoster.classList.add('active');
 
-    activePoster.classList.remove('active');
-    hiddenPoster.classList.add('active');
+const oldPoster = activePoster;
+activePoster = hiddenPoster;
+hiddenPoster = oldPoster;
 
-    hiddenPoster.classList.remove('arriving');
+setTimeout(() => {
+  activePoster.classList.remove('arriving');
+}, 420);
 
-    const oldPoster = activePoster;
-    activePoster = hiddenPoster;
-    hiddenPoster = oldPoster;
-
-    applyProject(currentProject);
-
+applyProject(currentProject);
     setTimeout(() => {
       titleBlock.classList.remove('switching');
       document.body.classList.remove('work-transition');
