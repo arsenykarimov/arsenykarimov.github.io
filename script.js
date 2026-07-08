@@ -6,23 +6,40 @@ let opened = false;
 setTimeout(() => {
   menu.classList.add('menu-opened');
   menu.classList.remove('menu-closed');
+
+  document.body.classList.add('home-menu-open');
+
   preloadWorkPosters();
+
   opened = true;
 }, 4200);
 
 menuIcon.addEventListener('click', () => {
+
   if (opened) {
+
     menu.classList.remove('menu-opened');
+
     menu.classList.add('menu-closed');
+
+    document.body.classList.remove('home-menu-open');
+
     opened = false;
+
   } else {
-  menu.classList.remove('menu-closed');
-  menu.classList.add('menu-opened');
 
-  preloadWorkPosters();
+    menu.classList.remove('menu-closed');
 
-  opened = true;
-}
+    menu.classList.add('menu-opened');
+
+    document.body.classList.add('home-menu-open');
+
+    preloadWorkPosters();
+
+    opened = true;
+
+  }
+
 });
 
 let workPostersPreloaded = false;
