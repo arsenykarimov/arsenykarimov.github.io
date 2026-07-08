@@ -6,6 +6,11 @@ const trailerVideo = document.querySelector('.trailer-video');
 const titleBlock = document.querySelector('.work-title');
 const titleText = document.querySelector('#project-title');
 const subtitleText = document.querySelector('#project-subtitle');
+const nextTitleText = document.querySelector('#next-project-title');
+const nextSubtitleText = document.querySelector('#next-project-subtitle');
+
+const currentTitleBlock = document.querySelector('.title-current');
+const nextTitleBlock = document.querySelector('.title-next');
 
 const playButton = document.querySelector('.work-play');
 const player = document.querySelector('.work-player');
