@@ -180,12 +180,16 @@ workViewer.addEventListener('click', (event) => {
   }
 
   if (playVisible) {
-    playButton.classList.remove('visible');
-    titleBlock.classList.remove('hidden');
+  playButton.classList.remove('visible');
 
-    previewPaused = false;
-    playVisible = false;
-  }
+  titleBlock.classList.remove('hidden');
+  titleBlock.classList.remove('switching');
+
+  previewPaused = false;
+  playVisible = false;
+
+  return;
+}
 });
 
 
