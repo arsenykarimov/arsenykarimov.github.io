@@ -91,20 +91,37 @@
   position: absolute;
   left: 50%;
   top: 48%;
+
   transform: translate(-50%,-50%);
+
   z-index: 6;
+
   text-align: center;
 
   transition:
-    opacity 0.12s ease,
-    filter 0.12s ease,
-    transform 0.12s ease;
+    opacity 0.35s ease,
+    filter 0.35s ease;
 }
 
-.work-title.switching {
-  opacity: 0;
-  filter: blur(5px);
+.title-current {
+  opacity: 1;
 }
+
+.title-next {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.work-title.cross-out {
+  opacity: 0;
+  filter: blur(4px);
+}
+
+.work-title.cross-in {
+  opacity: 1;
+  filter: blur(0);
+}
+
 
 .work-title.hidden {
   opacity: 0;
