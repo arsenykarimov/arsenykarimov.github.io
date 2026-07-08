@@ -431,6 +431,64 @@ body {
     object-position: center center;
   }
 
+.home-mobile-brand {
+  display: none;
+}
+
+.home-mobile-brand {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .home-mobile-brand {
+    position: fixed;
+    left: 5%;
+    top: 6%;
+
+    z-index: 9;
+
+    display: block;
+
+    text-decoration: none;
+
+    color: rgba(232,220,200,0.84);
+
+    font-family: "Circle Contrast", serif;
+    line-height: 1;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.35s ease;
+  }
+
+  .home-mobile-brand span {
+    display: block;
+    font-size: 18.8px;
+    letter-spacing: 6px;
+    opacity: 0.5;
+  }
+
+  .home-mobile-brand small {
+    display: block;
+    margin-top: 4px;
+    font-family: "Evolventa", sans-serif;
+    font-size: 8.4px;
+    letter-spacing: 1.6px;
+    opacity: 0.28;
+  }
+
+  .home-menu-open .home-mobile-brand {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .home-menu-open .hero-title {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 
   /* MOBILE MENU */
 
