@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Showreel | Arseny Karimov</title>
+
+  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="showreel.css?v=1">
+</head>
+
+<body class="showreel-page">
+
+  <section class="showreel-viewer">
+
+    <img 
+      class="showreel-poster" 
+      src="posters/showreel.jpg" 
+      alt=""
+    >
+
+    <div class="showreel-dim"></div>
+
+    <button class="showreel-menu-button" type="button" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="showreel-menu-overlay">
+      <div class="showreel-menu-links">
+        <a href="index.html">HOME</a>
+        <a href="work.html">WORK</a>
+        <a href="#">ABOUT</a>
+        <a href="#">CONTACT</a>
+      </div>
+    </nav>
+
+    <button class="showreel-play" type="button" aria-label="Play showreel">
+      <span></span>
+    </button>
+
+  </section>
+
+  <div class="showreel-player">
+    <button class="showreel-close" type="button" aria-label="Close player">×</button>
+
+    <video class="showreel-video" controls playsinline></video>
+  </div>
+
+  <script src="showreel.js?v=1"></script>
+
+</body>
+
+</html>
