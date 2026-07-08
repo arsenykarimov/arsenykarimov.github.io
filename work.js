@@ -32,6 +32,7 @@ function loadProject(index) {
   document.documentElement.style.setProperty('--work-accent', project.accent);
 
   loopVideo.src = project.loop;
+  loopVideo.poster = project.poster;
   loopVideo.load();
   loopVideo.play().catch(() => {});
 
