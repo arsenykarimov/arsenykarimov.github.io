@@ -192,10 +192,13 @@ workViewer.addEventListener('click', (event) => {
   }
 
   if (!previewPaused) {
-    titleBlock.classList.add('hidden');
-    titleBlock.classList.remove('switching');
+  currentTitleBlock.classList.add('hidden');
+  nextTitleBlock.classList.add('hidden');
 
-    playButton.classList.add('visible');
+  currentTitleBlock.classList.remove('cross-out');
+  nextTitleBlock.classList.remove('cross-in');
+
+  playButton.classList.add('visible');
 
     previewPaused = true;
     playVisible = true;
@@ -204,10 +207,13 @@ workViewer.addEventListener('click', (event) => {
   }
 
   if (playVisible) {
-    playButton.classList.remove('visible');
+  playButton.classList.remove('visible');
 
-    titleBlock.classList.remove('hidden');
-    titleBlock.classList.remove('switching');
+  currentTitleBlock.classList.remove('hidden');
+  nextTitleBlock.classList.remove('hidden');
+
+  currentTitleBlock.classList.remove('cross-out');
+  nextTitleBlock.classList.remove('cross-in');
 
     previewPaused = false;
     playVisible = false;
