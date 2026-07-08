@@ -6,6 +6,7 @@ let opened = false;
 setTimeout(() => {
   menu.classList.add('menu-opened');
   menu.classList.remove('menu-closed');
+  preloadWorkPosters();
   opened = true;
 }, 4200);
 
@@ -20,3 +21,24 @@ menuIcon.addEventListener('click', () => {
     opened = true;
   }
 });
+
+let workPostersPreloaded = false;
+
+function preloadWorkPosters() {
+  if (workPostersPreloaded) {
+    return;
+  }
+
+  const posters = [
+    'posters/retrograde.jpg',
+    'posters/paraneba.jpg',
+    'posters/anikushin.jpg'
+  ];
+
+  posters.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+
+  workPostersPreloaded = true;
+}
