@@ -16,10 +16,13 @@ menuIcon.addEventListener('click', () => {
     menu.classList.add('menu-closed');
     opened = false;
   } else {
-    menu.classList.remove('menu-closed');
-    menu.classList.add('menu-opened');
-    opened = true;
-  }
+  menu.classList.remove('menu-closed');
+  menu.classList.add('menu-opened');
+
+  preloadWorkPosters();
+
+  opened = true;
+}
 });
 
 let workPostersPreloaded = false;
