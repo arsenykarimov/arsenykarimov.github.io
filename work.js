@@ -39,13 +39,7 @@ let isSwitching = false;
 function applyProject(index) {
   const project = projects[index];
 
-  titleText.textContent = project.title;
-subtitleText.textContent = project.subtitle;
-
-document.documentElement.style.setProperty('--work-accent', project.accent);
-document.documentElement.style.setProperty('--current-accent', project.accent);
-
-
+  
   loopVideo.classList.remove('visible');
   loopVideo.pause();
 
@@ -80,6 +74,12 @@ function loadFirstProject() {
   activePoster.src = project.poster;
   activePoster.classList.add('active');
   activePoster.classList.remove('arriving');
+
+  titleText.textContent = project.title;
+  subtitleText.textContent = project.subtitle;
+
+  document.documentElement.style.setProperty('--work-accent', project.accent);
+  document.documentElement.style.setProperty('--current-accent', project.accent);
 
   applyProject(currentProject);
 }
