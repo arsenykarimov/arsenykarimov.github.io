@@ -42,3 +42,19 @@ function preloadWorkPosters() {
 
   workPostersPreloaded = true;
 }
+
+const workLink = document.querySelector('.work-link');
+
+if (workLink) {
+  workLink.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    preloadWorkPosters();
+
+    workLink.classList.add('loading');
+
+    setTimeout(() => {
+      window.location.href = workLink.href;
+    }, 900);
+  });
+}
