@@ -113,6 +113,9 @@ function showProject(direction) {
 
     document.documentElement.style.setProperty('--work-accent', nextProject.accent);
 
+    titleText.textContent = nextProject.title;
+    subtitleText.textContent = nextProject.subtitle;
+
 activePoster.classList.remove('active');
 hiddenPoster.classList.add('active');
 
