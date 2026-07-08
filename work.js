@@ -125,18 +125,15 @@ setTimeout(() => {
   currentProject = nextIndex;
 
   setTimeout(() => {
-    titleText.textContent = nextProject.title;
-    subtitleText.textContent = nextProject.subtitle;
+  titleText.textContent = nextProject.title;
+  subtitleText.textContent = nextProject.subtitle;
 
-    document.documentElement.style.setProperty('--work-accent', nextProject.accent);
-    document.documentElement.style.setProperty('--current-accent', nextProject.accent);
+  document.documentElement.style.setProperty('--work-accent', nextProject.accent);
+  document.documentElement.style.setProperty('--current-accent', nextProject.accent);
 
-    currentTitleBlock.classList.remove('cross-out');
-    nextTitleBlock.classList.remove('cross-in');
-
-    nextTitleText.textContent = '';
-    nextSubtitleText.textContent = '';
-  }, 350);
+  currentTitleBlock.classList.remove('cross-out');
+  nextTitleBlock.classList.remove('cross-in');
+}, 520);
 
   activePoster.classList.remove('active');
 hiddenPoster.classList.add('active');
