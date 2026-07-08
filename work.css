@@ -354,6 +354,8 @@
 }
 
 .work-menu-active .work-title,
+.work-menu-active .title-current,
+.work-menu-active .title-next,
 .work-menu-active .work-play,
 .work-menu-active .work-arrow {
   opacity: 0;
