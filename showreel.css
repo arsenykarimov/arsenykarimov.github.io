@@ -61,6 +61,32 @@
   pointer-events: none;
 }
 
+/* TITLE */
+
+.showreel-title {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  text-align: center;
+  transition: opacity .6s ease;
+}
+
+.showreel-title.hidden {
+  opacity: 0;
+}
+
+.showreel-title h1 {
+  margin: 0;
+  font-family: "Circle Contrast", serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 31.2px;
+  padding-left: 31.2px;
+  color: color-mix(in srgb, var(--showreel-accent) 84%, transparent);
+}
 
 /* PLAY */
 
