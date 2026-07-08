@@ -112,6 +112,13 @@
 
   background: transparent;
 
+    opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
+  
   cursor: pointer;
 }
 
