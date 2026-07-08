@@ -214,6 +214,12 @@
   pointer-events: auto;
 }
 
+.showreel-menu-active .showreel-title,
+.showreel-menu-active .showreel-play {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .showreel-menu-links {
   display: flex;
   flex-direction: column;
