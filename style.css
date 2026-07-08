@@ -478,3 +478,14 @@ body {
 
   opacity: 0.28;
 }
+
+/* MOBILE BRAND */
+
+@media (max-width: 768px) {
+
+  .site-brand-small {
+    left: 5%;
+    top: 5%;
+  }
+
+}
