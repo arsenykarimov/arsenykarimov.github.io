@@ -125,7 +125,6 @@ function showProject(direction) {
 titleBlock.classList.add('switching');
 
 setTimeout(() => {
-  titleBlock.classList.remove('switching');
   document.body.classList.remove('work-transition');
   isSwitching = false;
 }, 260);
