@@ -109,6 +109,13 @@ function showProject(direction) {
   hiddenPoster.src = nextProject.poster;
   hiddenPoster.classList.add('arriving');
 
+  nextTitleText.textContent = nextProject.title;
+nextSubtitleText.textContent = nextProject.subtitle;
+
+nextTitleBlock.classList.remove('cross-out');
+nextTitleBlock.classList.add('cross-in');
+
+currentTitleBlock.classList.add('cross-out');
   document.body.classList.add('work-transition');
   titleBlock.classList.add('switching');
 
@@ -119,6 +126,11 @@ function showProject(direction) {
 
     titleText.textContent = nextProject.title;
     subtitleText.textContent = nextProject.subtitle;
+
+    setTimeout(() => {
+  currentTitleBlock.classList.remove('cross-out');
+  nextTitleBlock.classList.remove('cross-in');
+}, 350);
 
 activePoster.classList.remove('active');
 hiddenPoster.classList.add('active');
