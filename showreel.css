@@ -278,3 +278,9 @@
     top: 5%;
   }
 }
+
+/* BRAND */
+
+.site-brand-small {
+  color: var(--showreel-accent);
+}
