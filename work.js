@@ -40,9 +40,11 @@ function applyProject(index) {
   const project = projects[index];
 
   titleText.textContent = project.title;
-  subtitleText.textContent = project.subtitle;
+subtitleText.textContent = project.subtitle;
 
-  document.documentElement.style.setProperty('--work-accent', project.accent);
+document.documentElement.style.setProperty('--work-accent', project.accent);
+document.documentElement.style.setProperty('--current-accent', project.accent);
+
 
   loopVideo.classList.remove('visible');
   loopVideo.pause();
@@ -112,27 +114,17 @@ function showProject(direction) {
   nextTitleText.textContent = nextProject.title;
 nextSubtitleText.textContent = nextProject.subtitle;
 
-nextTitleBlock.classList.remove('cross-out');
+document.documentElement.style.setProperty('--next-accent', nextProject.accent);
+
 nextTitleBlock.classList.add('cross-in');
-
 currentTitleBlock.classList.add('cross-out');
-  document.body.classList.add('work-transition');
-  titleBlock.classList.add('switching');
 
-  setTimeout(() => {
-    currentProject = nextIndex;
+document.body.classList.add('work-transition');
 
-    document.documentElement.style.setProperty('--work-accent', nextProject.accent);
+setTimeout(() => {
+  currentProject = nextIndex;
 
-    titleText.textContent = nextProject.title;
-    subtitleText.textContent = nextProject.subtitle;
-
-    setTimeout(() => {
-  currentTitleBlock.classList.remove('cross-out');
-  nextTitleBlock.classList.remove('cross-in');
-}, 350);
-
-activePoster.classList.remove('active');
+  activePoster.classList.remove('active');
 hiddenPoster.classList.add('active');
 
 const oldPoster = activePoster;
