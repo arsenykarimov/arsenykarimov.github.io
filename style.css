@@ -406,6 +406,12 @@ body {
 
 }
 
+/* HOME MOBILE BRAND */
+
+.home-mobile-brand {
+  display: none;
+}
+
 /* MOBILE */
 
 @media (max-width: 768px) {
