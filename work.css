@@ -28,7 +28,7 @@
 
   object-fit: cover;
 
-  transform: scale(1.12);
+  transform: scale(1,04);
   transform-origin: center center;
 }
 
@@ -36,18 +36,19 @@
   z-index: 1;
   opacity: 0;
   transform: scale(1.12);
-  transition:
-  opacity 0.4s ease,
-  transform 0.4s ease,
-  filter 0.4s ease;
+    transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    filter 0.4s ease;
 }
 
 .work-poster.active {
   opacity: 1;
+  transform: scale(1.04);
 }
 
 .work-poster.arriving {
-  transform: scale(1.04);
+  transform: scale(1);
 }
 
 .work-loop {
