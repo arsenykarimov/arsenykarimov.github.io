@@ -35,6 +35,20 @@ let touchStartX = 0;
 let touchStartY = 0;
 let isSwitching = false;
 
+let workPostersReady = false;
+
+function preloadWorkPosters() {
+  if (workPostersReady) {
+    return;
+  }
+
+  projects.forEach((project) => {
+    const img = new Image();
+    img.src = project.poster;
+  });
+
+  workPostersReady = true;
+}
 
 function applyProject(index) {
   const project = projects[index];
@@ -82,6 +96,7 @@ function loadFirstProject() {
   document.documentElement.style.setProperty('--current-accent', project.accent);
 
   applyProject(currentProject);
+  preloadWorkPosters();
 }
 
 
