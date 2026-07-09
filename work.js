@@ -177,8 +177,8 @@ function showProject(direction) {
   const preloadPoster = new Image();
 
   preloadPoster.onload = () => {
-    hiddenPoster.src = nextProject.poster;
     hiddenPoster.classList.add('arriving');
+    hiddenPoster.src = nextProject.poster;
 
     nextTitleText.textContent = nextProject.title;
     nextSubtitleText.textContent = nextProject.subtitle;
@@ -194,7 +194,10 @@ function showProject(direction) {
       currentProject = nextIndex;
 
       activePoster.classList.remove('active');
-      hiddenPoster.classList.add('active');
+
+requestAnimationFrame(() => {
+  hiddenPoster.classList.add('active');
+});
 
       const oldPoster = activePoster;
       activePoster = hiddenPoster;
