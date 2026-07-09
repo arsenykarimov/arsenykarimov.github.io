@@ -128,9 +128,14 @@ function applyProject(index) {
   trailerVideo.load();
 
   loopVideo.addEventListener('canplay', () => {
-    loopVideo.play().catch(() => {});
-    loopVideo.classList.add('visible');
-  }, { once: true });
+  loopVideo.play().catch(() => {});
+
+  setTimeout(() => {
+    if (!isSwitching) {
+      loopVideo.classList.add('visible');
+    }
+  }, 520);
+}, { once: true });
 
   player.classList.remove('visible');
   document.body.classList.remove('player-open');
@@ -215,6 +220,8 @@ function showProject(direction) {
 
         document.body.classList.remove('work-transition');
         isSwitching = false;
+
+        loopVideo.classList.add('visible');
 
         playVisible = false;
         startTitlePlayTimer();
