@@ -191,17 +191,19 @@ function showProject(direction) {
     document.body.classList.add('work-transition');
 
     setTimeout(() => {
-      currentProject = nextIndex;
+    currentProject = nextIndex;
 
-      activePoster.classList.remove('active');
+    const previousPoster = activePoster;
+    const nextPoster = hiddenPoster;
 
-requestAnimationFrame(() => {
-  hiddenPoster.classList.add('active');
+    previousPoster.classList.remove('active');
+
+    requestAnimationFrame(() => {
+    nextPoster.classList.add('active');
 });
 
-      const oldPoster = activePoster;
-      activePoster = hiddenPoster;
-      hiddenPoster = oldPoster;
+    activePoster = nextPoster;
+    hiddenPoster = previousPoster;
 
       setTimeout(() => {
         activePoster.classList.remove('arriving');
