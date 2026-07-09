@@ -129,12 +129,6 @@ function applyProject(index) {
 
   loopVideo.addEventListener('canplay', () => {
   loopVideo.play().catch(() => {});
-
-  setTimeout(() => {
-    if (!isSwitching) {
-      loopVideo.classList.add('visible');
-    }
-  }, 520);
 }, { once: true });
 
   player.classList.remove('visible');
@@ -171,6 +165,8 @@ function showProject(direction) {
   stopTitlePlayTimer();
   closeWorkMenu();
   showTitle();
+  
+  loopVideo.classList.remove('visible');
 
   const nextIndex =
     direction === 'next'
