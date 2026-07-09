@@ -328,7 +328,9 @@ if (canHover) {
 playButton.addEventListener('click', () => {
   stopTitlePlayTimer();
   hoverActive = false;
-  closeWorkMenu();
+  document.body.classList.remove('work-menu-active');
+  workMenuOpen = false;
+
 
   document.body.classList.add('player-open');
   player.classList.add('visible');
