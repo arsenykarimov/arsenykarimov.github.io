@@ -3,7 +3,6 @@ const posterB = document.querySelector('.poster-b');
 const loopVideo = document.querySelector('.work-loop');
 const trailerVideo = document.querySelector('.trailer-video');
 
-const titleBlock = document.querySelector('.work-title');
 const titleText = document.querySelector('#project-title');
 const subtitleText = document.querySelector('#project-subtitle');
 const nextTitleText = document.querySelector('#next-project-title');
@@ -23,11 +22,12 @@ const workViewer = document.querySelector('.work-viewer');
 const workMenuButton = document.querySelector('.work-menu-button');
 const workMenuOverlay = document.querySelector('.work-menu-overlay');
 
+const canHover = window.matchMedia('(hover: hover)').matches;
+
 let currentProject = 0;
 let activePoster = posterA;
 let hiddenPoster = posterB;
 
-let previewPaused = false;
 let playVisible = false;
 let workMenuOpen = false;
 
@@ -36,11 +36,12 @@ let touchStartY = 0;
 let isSwitching = false;
 
 let workPostersReady = false;
+let titlePlayTimer = null;
+let hoverActive = false;
+
 
 function preloadWorkPosters() {
-  if (workPostersReady) {
-    return;
-  }
+  if (workPostersReady) return;
 
   projects.forEach((project) => {
     const img = new Image();
@@ -50,10 +51,71 @@ function preloadWorkPosters() {
   workPostersReady = true;
 }
 
+
+function stopTitlePlayTimer() {
+  clearTimeout(titlePlayTimer);
+  titlePlayTimer = null;
+}
+
+
+function showTitle() {
+  playButton.classList.remove('visible');
+
+  currentTitleBlock.classList.remove('hidden');
+  nextTitleBlock.classList.remove('hidden');
+
+  currentTitleBlock.classList.remove('cross-out');
+  nextTitleBlock.classList.remove('cross-in');
+
+  playVisible = false;
+}
+
+
+function showPlay() {
+  currentTitleBlock.classList.add('hidden');
+  nextTitleBlock.classList.add('hidden');
+
+  currentTitleBlock.classList.remove('cross-out');
+  nextTitleBlock.classList.remove('cross-in');
+
+  playButton.classList.add('visible');
+
+  playVisible = true;
+}
+
+
+function canRunTitlePlayTimer() {
+  return (
+    !workMenuOpen &&
+    !isSwitching &&
+    !player.classList.contains('visible') &&
+    !hoverActive
+  );
+}
+
+
+function startTitlePlayTimer() {
+  stopTitlePlayTimer();
+
+  if (!canRunTitlePlayTimer()) return;
+
+  titlePlayTimer = setTimeout(() => {
+    if (!canRunTitlePlayTimer()) return;
+
+    if (playVisible) {
+      showTitle();
+    } else {
+      showPlay();
+    }
+
+    startTitlePlayTimer();
+  }, 2000);
+}
+
+
 function applyProject(index) {
   const project = projects[index];
 
-  
   loopVideo.classList.remove('visible');
   loopVideo.pause();
 
@@ -72,13 +134,6 @@ function applyProject(index) {
 
   player.classList.remove('visible');
   document.body.classList.remove('player-open');
-
-  titleBlock.classList.remove('hidden');
-  
-  playButton.classList.remove('visible');
-
-  previewPaused = false;
-  playVisible = false;
 }
 
 
@@ -97,28 +152,20 @@ function loadFirstProject() {
 
   applyProject(currentProject);
   preloadWorkPosters();
+  showTitle();
+  startTitlePlayTimer();
 }
 
 
 function showProject(direction) {
-  if (isSwitching) {
-    return;
-  }
+  if (isSwitching) return;
 
   isSwitching = true;
+  hoverActive = false;
 
+  stopTitlePlayTimer();
   closeWorkMenu();
-
-  currentTitleBlock.classList.remove('hidden');
-  nextTitleBlock.classList.remove('hidden');
-
-  currentTitleBlock.classList.remove('cross-out');
-  nextTitleBlock.classList.remove('cross-in');
-
-  playButton.classList.remove('visible');
-
-  previewPaused = false;
-  playVisible = false;
+  showTitle();
 
   const nextIndex =
     direction === 'next'
@@ -126,7 +173,6 @@ function showProject(direction) {
       : (currentProject - 1 + projects.length) % projects.length;
 
   const nextProject = projects[nextIndex];
-
   const preloadPoster = new Image();
 
   preloadPoster.onload = () => {
@@ -170,6 +216,9 @@ function showProject(direction) {
 
         document.body.classList.remove('work-transition');
         isSwitching = false;
+
+        showTitle();
+        startTitlePlayTimer();
       }, 520);
 
     }, 100);
@@ -177,6 +226,7 @@ function showProject(direction) {
 
   preloadPoster.onerror = () => {
     isSwitching = false;
+    startTitlePlayTimer();
   };
 
   preloadPoster.src = nextProject.poster;
@@ -184,13 +234,16 @@ function showProject(direction) {
 
 
 function openWorkMenu() {
-  titleBlock.classList.add('hidden');
+  stopTitlePlayTimer();
+
+  currentTitleBlock.classList.add('hidden');
+  nextTitleBlock.classList.add('hidden');
+
   playButton.classList.remove('visible');
+  playVisible = false;
 
   document.body.classList.add('work-menu-active');
 
-  previewPaused = false;
-  playVisible = false;
   workMenuOpen = true;
 }
 
@@ -198,11 +251,12 @@ function openWorkMenu() {
 function closeWorkMenu() {
   document.body.classList.remove('work-menu-active');
 
-  if (!player.classList.contains('visible')) {
-    titleBlock.classList.remove('hidden');
-  }
-
   workMenuOpen = false;
+
+  if (!player.classList.contains('visible') && !isSwitching) {
+    showTitle();
+    startTitlePlayTimer();
+  }
 }
 
 
@@ -219,39 +273,61 @@ workViewer.addEventListener('click', (event) => {
     return;
   }
 
-  if (!previewPaused) {
-  currentTitleBlock.classList.add('hidden');
-  nextTitleBlock.classList.add('hidden');
-
-  currentTitleBlock.classList.remove('cross-out');
-  nextTitleBlock.classList.remove('cross-in');
-
-  playButton.classList.add('visible');
-
-    previewPaused = true;
-    playVisible = true;
-
+  if (!playVisible) {
+    stopTitlePlayTimer();
+    hoverActive = false;
+    showPlay();
     return;
   }
 
-  if (playVisible) {
-  playButton.classList.remove('visible');
-
-  currentTitleBlock.classList.remove('hidden');
-  nextTitleBlock.classList.remove('hidden');
-
-  currentTitleBlock.classList.remove('cross-out');
-  nextTitleBlock.classList.remove('cross-in');
-
-    previewPaused = false;
-    playVisible = false;
-
-    return;
-  }
+  hoverActive = false;
+  showTitle();
+  startTitlePlayTimer();
 });
 
 
+if (canHover) {
+  workViewer.addEventListener('mousemove', (event) => {
+    if (
+      workMenuOpen ||
+      isSwitching ||
+      player.classList.contains('visible') ||
+      event.target.closest('.work-arrow') ||
+      event.target.closest('.work-menu-button') ||
+      event.target.closest('.work-menu-overlay') ||
+      event.target.closest('.work-play')
+    ) {
+      return;
+    }
+
+    const rect = workViewer.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const insideTitleZone =
+      x > rect.width * 0.28 &&
+      x < rect.width * 0.72 &&
+      y > rect.height * 0.36 &&
+      y < rect.height * 0.58;
+
+    if (insideTitleZone && !hoverActive) {
+      hoverActive = true;
+      stopTitlePlayTimer();
+      showPlay();
+    }
+
+    if (!insideTitleZone && hoverActive) {
+      hoverActive = false;
+      showTitle();
+      startTitlePlayTimer();
+    }
+  });
+}
+
+
 playButton.addEventListener('click', () => {
+  stopTitlePlayTimer();
+  hoverActive = false;
   closeWorkMenu();
 
   document.body.classList.add('player-open');
@@ -268,13 +344,8 @@ closeButton.addEventListener('click', () => {
   player.classList.remove('visible');
   document.body.classList.remove('player-open');
 
-  playButton.classList.remove('visible');
-
-  titleBlock.classList.remove('hidden');
-  titleBlock.classList.remove('switching');
-
-  previewPaused = false;
-  playVisible = false;
+  showTitle();
+  startTitlePlayTimer();
 });
 
 
@@ -317,9 +388,7 @@ workViewer.addEventListener('touchend', (event) => {
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
 
-  if (Math.abs(diffX) < 60 && Math.abs(diffY) < 60) {
-    return;
-  }
+  if (Math.abs(diffX) < 60 && Math.abs(diffY) < 60) return;
 
   if (Math.abs(diffY) > Math.abs(diffX)) {
     if (diffY < -60 && workMenuOpen) {
@@ -337,13 +406,8 @@ workViewer.addEventListener('touchend', (event) => {
     return;
   }
 
-  if (diffX < -60) {
-    showProject('next');
-  }
-
-  if (diffX > 60) {
-    showProject('prev');
-  }
+  if (diffX < -60) showProject('next');
+  if (diffX > 60) showProject('prev');
 }, { passive: true });
 
 
