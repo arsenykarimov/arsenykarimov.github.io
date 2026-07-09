@@ -109,8 +109,12 @@ function showProject(direction) {
 
   closeWorkMenu();
 
-  titleBlock.classList.remove('hidden');
-  titleBlock.classList.remove('switching');
+  currentTitleBlock.classList.remove('hidden');
+  nextTitleBlock.classList.remove('hidden');
+
+  currentTitleBlock.classList.remove('cross-out');
+  nextTitleBlock.classList.remove('cross-in');
+
   playButton.classList.remove('visible');
 
   previewPaused = false;
@@ -123,50 +127,59 @@ function showProject(direction) {
 
   const nextProject = projects[nextIndex];
 
-  hiddenPoster.src = nextProject.poster;
-  hiddenPoster.classList.add('arriving');
+  const preloadPoster = new Image();
 
-  nextTitleText.textContent = nextProject.title;
-nextSubtitleText.textContent = nextProject.subtitle;
+  preloadPoster.onload = () => {
+    hiddenPoster.src = nextProject.poster;
+    hiddenPoster.classList.add('arriving');
 
-document.documentElement.style.setProperty('--next-accent', nextProject.accent);
+    nextTitleText.textContent = nextProject.title;
+    nextSubtitleText.textContent = nextProject.subtitle;
 
-nextTitleBlock.classList.add('cross-in');
-currentTitleBlock.classList.add('cross-out');
+    document.documentElement.style.setProperty('--next-accent', nextProject.accent);
 
-document.body.classList.add('work-transition');
+    nextTitleBlock.classList.add('cross-in');
+    currentTitleBlock.classList.add('cross-out');
 
-setTimeout(() => {
-  currentProject = nextIndex;
+    document.body.classList.add('work-transition');
 
-  setTimeout(() => {
-  titleText.textContent = nextProject.title;
-  subtitleText.textContent = nextProject.subtitle;
-
-  document.documentElement.style.setProperty('--work-accent', nextProject.accent);
-  document.documentElement.style.setProperty('--current-accent', nextProject.accent);
-
-  currentTitleBlock.classList.remove('cross-out');
-}, 520);
-
-  activePoster.classList.remove('active');
-hiddenPoster.classList.add('active');
-
-const oldPoster = activePoster;
-activePoster = hiddenPoster;
-hiddenPoster = oldPoster;
-
-setTimeout(() => {
-  activePoster.classList.remove('arriving');
-}, 420);
-
-applyProject(currentProject);
     setTimeout(() => {
-      document.body.classList.remove('work-transition');
-      isSwitching = false;
-    }, 420);
+      currentProject = nextIndex;
 
-  }, 100);
+      activePoster.classList.remove('active');
+      hiddenPoster.classList.add('active');
+
+      const oldPoster = activePoster;
+      activePoster = hiddenPoster;
+      hiddenPoster = oldPoster;
+
+      setTimeout(() => {
+        activePoster.classList.remove('arriving');
+      }, 420);
+
+      applyProject(currentProject);
+
+      setTimeout(() => {
+        titleText.textContent = nextProject.title;
+        subtitleText.textContent = nextProject.subtitle;
+
+        document.documentElement.style.setProperty('--work-accent', nextProject.accent);
+        document.documentElement.style.setProperty('--current-accent', nextProject.accent);
+
+        currentTitleBlock.classList.remove('cross-out');
+
+        document.body.classList.remove('work-transition');
+        isSwitching = false;
+      }, 520);
+
+    }, 100);
+  };
+
+  preloadPoster.onerror = () => {
+    isSwitching = false;
+  };
+
+  preloadPoster.src = nextProject.poster;
 }
 
 
