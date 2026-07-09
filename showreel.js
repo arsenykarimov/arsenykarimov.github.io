@@ -8,9 +8,27 @@ const menuButton = document.querySelector('.showreel-menu-button');
 const menuOverlay = document.querySelector('.showreel-menu-overlay');
 const viewer = document.querySelector('.showreel-viewer');
 
+const canHover = window.matchMedia('(hover: hover)').matches;
+
 const showreelUrl = "https://pub-e6c268da1b654b929cf0eb9763a0a6e1.r2.dev/Trailers/showreel.mp4";
 
 let playVisible = false;
+let menuOpen = false;
+let hoverActive = false;
+let titlePlayTimer = null;
+
+
+function stopTitlePlayTimer() {
+  clearTimeout(titlePlayTimer);
+  titlePlayTimer = null;
+}
+
+
+function showTitle() {
+  playButton.classList.remove('visible');
+  title.classList.remove('hidden');
+  playVisible = false;
+}
 
 
 function showPlay() {
@@ -20,15 +38,43 @@ function showPlay() {
 }
 
 
-function hidePlay() {
-  playButton.classList.remove('visible');
-  title.classList.remove('hidden');
-  playVisible = false;
+function canRunTitlePlayTimer() {
+  return (
+    !menuOpen &&
+    !player.classList.contains('visible') &&
+    !hoverActive
+  );
+}
+
+
+function startTitlePlayTimer() {
+  stopTitlePlayTimer();
+
+  if (!canRunTitlePlayTimer()) return;
+
+  titlePlayTimer = setTimeout(() => {
+    if (!canRunTitlePlayTimer()) return;
+
+    if (playVisible) {
+      showTitle();
+    } else {
+      showPlay();
+    }
+
+    startTitlePlayTimer();
+  }, 2000);
 }
 
 
 function openPlayer() {
+  stopTitlePlayTimer();
+  hoverActive = false;
+
   document.body.classList.remove('showreel-menu-active');
+  menuOpen = false;
+  
+  playButton.classList.remove('visible');
+  playVisible = false;
 
   video.src = showreelUrl;
   video.currentTime = 0;
@@ -44,16 +90,19 @@ function closePlayer() {
 
   player.classList.remove('visible');
 
-  hidePlay();
-
   setTimeout(() => {
     video.src = "";
   }, 500);
+
+  showTitle();
+  startTitlePlayTimer();
 }
 
 
 viewer.addEventListener('click', (event) => {
   if (
+    menuOpen ||
+    player.classList.contains('visible') ||
     event.target.closest('.showreel-play') ||
     event.target.closest('.showreel-menu-button') ||
     event.target.closest('.showreel-menu-overlay')
@@ -62,12 +111,53 @@ viewer.addEventListener('click', (event) => {
   }
 
   if (!playVisible) {
+    stopTitlePlayTimer();
+    hoverActive = false;
     showPlay();
     return;
   }
 
-  hidePlay();
+  hoverActive = false;
+  showTitle();
+  startTitlePlayTimer();
 });
+
+
+if (canHover) {
+  viewer.addEventListener('mousemove', (event) => {
+    if (
+      menuOpen ||
+      player.classList.contains('visible') ||
+      event.target.closest('.showreel-menu-button') ||
+      event.target.closest('.showreel-menu-overlay') ||
+      event.target.closest('.showreel-play')
+    ) {
+      return;
+    }
+
+    const rect = viewer.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const insideTitleZone =
+      x > rect.width * 0.28 &&
+      x < rect.width * 0.72 &&
+      y > rect.height * 0.36 &&
+      y < rect.height * 0.58;
+
+    if (insideTitleZone && !hoverActive) {
+      hoverActive = true;
+      stopTitlePlayTimer();
+      showPlay();
+    }
+
+    if (!insideTitleZone && hoverActive) {
+      hoverActive = false;
+      showTitle();
+      startTitlePlayTimer();
+    }
+  });
+}
 
 
 playButton.addEventListener('click', () => {
@@ -81,17 +171,39 @@ closeButton.addEventListener('click', () => {
 
 
 menuButton.addEventListener('click', () => {
-  document.body.classList.toggle('showreel-menu-active');
+  if (menuOpen) {
+    document.body.classList.remove('showreel-menu-active');
+    menuOpen = false;
+
+    showTitle();
+    startTitlePlayTimer();
+
+    return;
+  }
+
+  stopTitlePlayTimer();
+
+  document.body.classList.add('showreel-menu-active');
 
   title.classList.add('hidden');
   playButton.classList.remove('visible');
+
   playVisible = false;
+  menuOpen = true;
 });
 
 
 menuOverlay.addEventListener('click', (event) => {
   if (!event.target.closest('.showreel-menu-links')) {
     document.body.classList.remove('showreel-menu-active');
-    title.classList.remove('hidden');
+
+    menuOpen = false;
+
+    showTitle();
+    startTitlePlayTimer();
   }
 });
+
+
+showTitle();
+startTitlePlayTimer();
