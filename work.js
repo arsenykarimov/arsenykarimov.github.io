@@ -216,7 +216,7 @@ function showProject(direction) {
         document.body.classList.remove('work-transition');
         isSwitching = false;
 
-        showTitle();
+        playVisible = false;
         startTitlePlayTimer();
       }, 520);
 
