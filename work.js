@@ -212,7 +212,6 @@ function showProject(direction) {
         document.documentElement.style.setProperty('--work-accent', nextProject.accent);
         document.documentElement.style.setProperty('--current-accent', nextProject.accent);
 
-        currentTitleBlock.classList.remove('cross-out');
 
         document.body.classList.remove('work-transition');
         isSwitching = false;
