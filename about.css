@@ -82,7 +82,9 @@
   line-height: 1.9;
   letter-spacing: 1.8px;
 
-  text-align: center;
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
 
   color: color-mix(
     in srgb,
