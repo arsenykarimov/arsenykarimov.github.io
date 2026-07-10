@@ -448,7 +448,14 @@ body {
   line-height: 0.85;
 
   letter-spacing: 18px;
-  white-space: pre-line;
+
+  white-space: normal;
+}
+
+  .hero-title .name-gap {
+  display: block;
+  height: 0;
+  width: 0;
 }
 
   .hero-title p {
@@ -464,7 +471,7 @@ body {
    object-position: center center;
   }
 
-.home-mobile-brand {
+  .home-mobile-brand {
   display: none;
 }
 
