@@ -82,6 +82,11 @@ body {
   color: rgba(232,220,200,0.84);
 }
 
+.hero-title .name-gap {
+  display: inline-block;
+  width: 18px;
+}
+
 .chaos-title span {
   display: inline-block;
   opacity: 0;
