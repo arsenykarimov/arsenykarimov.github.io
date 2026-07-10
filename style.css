@@ -439,9 +439,9 @@ body {
 @media (max-width: 768px) {
 
   .hero-title {
-    left: 7%;
-    top: 49%;
-  }
+  left: 7%;
+  top: 26%;
+}
 
   .hero-title h1 {
     font-size: 34px;
