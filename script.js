@@ -2,8 +2,13 @@ const menu = document.querySelector('.menu');
 const menuIcon = document.querySelector('.menu-icon');
 
 let opened = false;
+let menuWasUsed = false;
 
-setTimeout(() => {
+const autoOpenTimer = setTimeout(() => {
+  if (menuWasUsed || opened) {
+    return;
+  }
+
   menu.classList.add('menu-opened');
   menu.classList.remove('menu-closed');
 
@@ -12,34 +17,30 @@ setTimeout(() => {
   preloadWorkPosters();
 
   opened = true;
-}, 4200);
+}, 6200);
 
 menuIcon.addEventListener('click', () => {
+  menuWasUsed = true;
+  clearTimeout(autoOpenTimer);
 
   if (opened) {
-
     menu.classList.remove('menu-opened');
-
     menu.classList.add('menu-closed');
 
     document.body.classList.remove('home-menu-open');
 
     opened = false;
-
-  } else {
-
-    menu.classList.remove('menu-closed');
-
-    menu.classList.add('menu-opened');
-
-    document.body.classList.add('home-menu-open');
-
-    preloadWorkPosters();
-
-    opened = true;
-
+    return;
   }
 
+  menu.classList.remove('menu-closed');
+  menu.classList.add('menu-opened');
+
+  document.body.classList.add('home-menu-open');
+
+  preloadWorkPosters();
+
+  opened = true;
 });
 
 let workPostersPreloaded = false;
