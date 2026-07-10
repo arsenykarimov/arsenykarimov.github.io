@@ -440,24 +440,28 @@ body {
 
   .hero-title {
   left: 7%;
-  top: 26%;
+  top: 30%;
 }
 
   .hero-title h1 {
-  font-size: 28px;
-  letter-spacing: 2.6px;
+  font-size: 48px;
+  line-height: 0.85;
+
+  letter-spacing: 18px;
+  white-space: pre-line;
+}
+
+  .hero-title p {
+  margin-top: 20px;
+
+  font-size: 15.7px;
+  letter-spacing: 4px;
+
   white-space: nowrap;
 }
 
-.hero-title p {
-  margin-top: 8px;
-  font-size: 12px;
-  letter-spacing: 1.8px;
-  white-space: nowrap;
-}
-
-  .hero-bg {
-    object-position: center center;
+   .hero-bg {
+   object-position: center center;
   }
 
 .home-mobile-brand {
