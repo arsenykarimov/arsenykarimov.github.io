@@ -444,16 +444,17 @@ body {
 }
 
   .hero-title h1 {
-    font-size: 34px;
-    letter-spacing: 18px;
-    line-height: 0.9;
-  }
+  font-size: 28px;
+  letter-spacing: 2.6px;
+  white-space: nowrap;
+}
 
-  .hero-title p {
-    margin-top: 18px;
-    font-size: 11px;
-    letter-spacing: 3.5px;
-  }
+.hero-title p {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  white-space: nowrap;
+}
 
   .hero-bg {
     object-position: center center;
