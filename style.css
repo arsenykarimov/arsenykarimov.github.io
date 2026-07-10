@@ -146,6 +146,7 @@ body {
   width: 82px;
   height: 68px;
   position: relative;
+
   cursor: pointer;
   pointer-events: auto;
   touch-action: manipulation;
@@ -154,9 +155,8 @@ body {
   border: 0;
   padding: 0;
 
-  opacity: 0;
-  animation: menuIconAppear 2s ease forwards;
-  animation-delay: 3s;
+  opacity: 1;
+  animation: none;
 }
 
 .menu-icon span {
