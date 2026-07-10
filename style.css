@@ -58,18 +58,27 @@ body {
 .hero-title {
   position: absolute;
   left: 6%;
-  top: 42%;
+  top: 39%;
+
   transform: translateY(-50%);
+
   z-index: 3;
 }
 
 .hero-title h1 {
   font-family: 'Circle Contrast', serif;
+
   margin: 0;
+
   font-size: 48px;
-  line-height: 0.85;
-  letter-spacing: 31px;
+  line-height: 1;
+
+  letter-spacing: 4.5px;
+
   font-weight: 400;
+
+  white-space: nowrap;
+
   color: rgba(232,220,200,0.84);
 }
 
@@ -95,9 +104,17 @@ body {
 .chaos-title span:nth-child(14) { animation-delay: 0.39s; }
 
 .hero-title p {
-  margin-top: 24px;
-  font-size: 15.7px;
-  letter-spacing: 6px;
+  margin-top: 14px;
+
+  font-family: "Evolventa", sans-serif;
+
+  font-size: 21.3px;
+  line-height: 1;
+
+  letter-spacing: 3.8px;
+
+  white-space: nowrap;
+
   color: rgba(232,220,200,0.84);
 }
 
