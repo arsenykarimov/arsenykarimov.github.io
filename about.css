@@ -348,11 +348,8 @@
   .about-content::before {
   content: "";
 
-  width: 122%;
-  height: 118%;
-
-  left: 50%;
-  top: 50%;
+  width: 112%;
+  height: 116%;
 
   transform: translate(-50%, -50%);
 
