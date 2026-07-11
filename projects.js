@@ -29,13 +29,12 @@ const projects = [
     trailer: "https://pub-e6c268da1b654b929cf0eb9763a0a6e1.r2.dev/Trailers/anikushin-trailer.mp4"
   }
 {
-  id: "anikushin2",
-  title: "ANIKUSHIN\nMUSEUM",
-  subtitle: "EXHIBITION",
-  accent: "#A8E5FF",
-  poster: "posters/anikushin_2.jpg",
-  loop: "video/anikushin_2-loop.mp4",
-  trailer: "https://pub-e6c268da1b654b929cf0eb9763a0a6e1.r2.dev/Trailers/anikushin_2.mp4"
-},
-  
+    id: "anikushin2",
+    title: "ANIKUSHIN\nMUSEUM",
+    subtitle: "EXHIBITION",
+    accent: "#A8E5FF",
+    poster: "posters/anikushin_2.jpg",
+    loop: "video/anikushin_2-loop.mp4",
+    trailer: "https://pub-e6c268da1b654b929cf0eb9763a0a6e1.r2.dev/Trailers/anikushin_2.mp4"
+  },
 ];
