@@ -97,8 +97,41 @@
     filter .6s ease;
 }
 
+.about-content {
+  position: relative;
+  isolation: isolate;
+}
+
 .about-content p {
   margin: 0 0 28px;
+}
+
+.about-content::before {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 145%;
+  height: 135%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0,0,0,.52) 0%,
+      rgba(0,0,0,.32) 42%,
+      rgba(0,0,0,.12) 66%,
+      rgba(0,0,0,0) 86%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
 }
 
 .about-content p:last-child {
@@ -311,5 +344,28 @@
     font-size: 14px;
     letter-spacing: 5px;
   }
+  
+  .about-content::before {
+  content: "";
+
+  width: 122%;
+  height: 118%;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0,0,0,.68) 0%,
+      rgba(0,0,0,.48) 38%,
+      rgba(0,0,0,.18) 68%,
+      rgba(0,0,0,0) 88%
+    );
+
+  filter: blur(16px);
+}
 
 }
