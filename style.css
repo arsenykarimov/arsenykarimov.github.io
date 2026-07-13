@@ -505,13 +505,8 @@ body {
 @media (max-width: 768px) {
 
   .hero-title {
-  left: 50%;
+  left: calc(7% + 6px);
   top: 35%;
-  transform: translate(-50%, -50%);
-
-  width: max-content;
-
-  text-align: center;
 }
 
   .hero-title h1 {
