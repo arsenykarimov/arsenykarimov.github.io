@@ -331,6 +331,55 @@ body {
     text-shadow: 0 0 6px rgba(232,220,200,0.10);
   }
 }
+@keyframes letterReplay {
+  0% {
+    opacity: 1;
+    color: rgba(232,220,200,0.84);
+    text-shadow: 0 0 6px rgba(232,220,200,0.10);
+  }
+
+  14% {
+    opacity: 0.48;
+    text-shadow: 0 0 14px rgba(150,190,255,0.28);
+  }
+
+  28% {
+    opacity: 0.92;
+    text-shadow: 0 0 20px rgba(150,190,255,0.34);
+  }
+
+  42% {
+    opacity: 0.32;
+  }
+
+  58% {
+    opacity: 1;
+    text-shadow: 0 0 16px rgba(232,220,200,0.24);
+  }
+
+  72% {
+    opacity: 0.58;
+  }
+
+  86% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    color: rgba(232,220,200,0.84);
+    text-shadow: 0 0 6px rgba(232,220,200,0.10);
+  }
+}
+
+.hero-title.replaying .chaos-title span,
+.hero-title.replaying .chaos-subtitle span {
+  animation-name: letterReplay;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+}
 
 
 /* SMALL BRAND */
