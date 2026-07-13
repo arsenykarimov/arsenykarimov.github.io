@@ -356,15 +356,17 @@ body {
   display: block;
 
   font-size: 18.8px;
-  letter-spacing: 6px;
+  letter-spacing: 4.6px;
 
   opacity: 0.5;
+
+  white-space: nowrap;
 }
 
-.site-brand-small small {
-  display: block;
-
-  margin-top: 5px;
+.site-brand-gap {
+  display: inline-block;
+  width: 9px;
+}
 
   font-family: "Evolventa", sans-serif;
 
