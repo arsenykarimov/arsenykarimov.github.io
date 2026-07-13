@@ -510,18 +510,18 @@ body {
 }
 
   .hero-title h1 {
-  font-size: 48px;
-  line-height: 0.85;
+  font-size: 29px;
+  line-height: 1;
 
-  letter-spacing: 12px;
+  letter-spacing: 2.7px;
 
-  white-space: normal;
+  white-space: nowrap;
 }
 
   .hero-title .name-gap {
-  display: block;
-  height: 0;
-  width: 0;
+  display: inline-block;
+  height: auto;
+  width: 11px;
 }
 
   .hero-title p {
