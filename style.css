@@ -333,7 +333,7 @@ body {
 }
 @keyframes letterReplay {
   0% {
-    opacity: 0.25;
+    opacity: 0.05;
     text-shadow: 0 0 10px rgba(150,190,255,0.20);
     color: rgba(232,220,200,0.84);
   }
