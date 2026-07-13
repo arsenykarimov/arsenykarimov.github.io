@@ -79,3 +79,25 @@ if (workLink) {
     }, 900);
   });
 }
+
+const heroTitle = document.querySelector('.hero-title');
+
+if (heroTitle) {
+
+  heroTitle.addEventListener('click', () => {
+
+    const letters = heroTitle.querySelectorAll(
+      '.chaos-title span, .chaos-subtitle span'
+    );
+
+    letters.forEach((letter) => {
+      letter.style.animation = 'none';
+
+      void letter.offsetWidth;
+
+      letter.style.animation = '';
+    });
+
+  });
+
+}
