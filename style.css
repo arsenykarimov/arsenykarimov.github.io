@@ -381,6 +381,42 @@ body {
   animation-fill-mode: forwards;
 }
 
+.hero-title.replaying .chaos-title span:nth-child(1)  { animation-delay: 0.03s; }
+.hero-title.replaying .chaos-title span:nth-child(2)  { animation-delay: 0.11s; }
+.hero-title.replaying .chaos-title span:nth-child(3)  { animation-delay: 0.06s; }
+.hero-title.replaying .chaos-title span:nth-child(4)  { animation-delay: 0.18s; }
+.hero-title.replaying .chaos-title span:nth-child(5)  { animation-delay: 0.08s; }
+.hero-title.replaying .chaos-title span:nth-child(6)  { animation-delay: 0.14s; }
+
+.hero-title.replaying .chaos-title span:nth-child(8)  { animation-delay: 0.04s; }
+.hero-title.replaying .chaos-title span:nth-child(9)  { animation-delay: 0.13s; }
+.hero-title.replaying .chaos-title span:nth-child(10) { animation-delay: 0.07s; }
+.hero-title.replaying .chaos-title span:nth-child(11) { animation-delay: 0.20s; }
+.hero-title.replaying .chaos-title span:nth-child(12) { animation-delay: 0.10s; }
+.hero-title.replaying .chaos-title span:nth-child(13) { animation-delay: 0.16s; }
+.hero-title.replaying .chaos-title span:nth-child(14) { animation-delay: 0.09s; }
+
+.hero-title.replaying .chaos-subtitle span:nth-child(1)  { animation-delay: 0.12s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(2)  { animation-delay: 0.22s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(3)  { animation-delay: 0.15s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(4)  { animation-delay: 0.29s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(5)  { animation-delay: 0.17s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(6)  { animation-delay: 0.25s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(7)  { animation-delay: 0.14s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(8)  { animation-delay: 0.32s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(9)  { animation-delay: 0.20s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(10) { animation-delay: 0.27s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(11) { animation-delay: 0.15s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(12) { animation-delay: 0.30s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(13) { animation-delay: 0.18s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(14) { animation-delay: 0.24s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(15) { animation-delay: 0.16s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(16) { animation-delay: 0.33s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(17) { animation-delay: 0.21s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(18) { animation-delay: 0.28s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(19) { animation-delay: 0.17s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(20) { animation-delay: 0.31s; }
+.hero-title.replaying .chaos-subtitle span:nth-child(21) { animation-delay: 0.23s; }
 
 /* SMALL BRAND */
 
