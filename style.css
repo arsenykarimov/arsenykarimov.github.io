@@ -338,30 +338,34 @@ body {
     text-shadow: 0 0 6px rgba(232,220,200,0.10);
   }
 
-  14% {
-    opacity: 0.48;
-    text-shadow: 0 0 14px rgba(150,190,255,0.28);
+  10% {
+    opacity: 0.25;
+    text-shadow: 0 0 10px rgba(150,190,255,0.20);
   }
 
-  28% {
-    opacity: 0.92;
-    text-shadow: 0 0 20px rgba(150,190,255,0.34);
+  18% {
+    opacity: 0.05;
+  }
+
+  30% {
+    opacity: 0.75;
+    text-shadow: 0 0 18px rgba(150,190,255,0.30);
   }
 
   42% {
-    opacity: 0.32;
+    opacity: 0.18;
   }
 
-  58% {
-    opacity: 1;
-    text-shadow: 0 0 16px rgba(232,220,200,0.24);
+  55% {
+    opacity: 0.9;
+    text-shadow: 0 0 14px rgba(232,220,200,0.22);
   }
 
-  72% {
-    opacity: 0.58;
+  68% {
+    opacity: 0.45;
   }
 
-  86% {
+  82% {
     opacity: 1;
   }
 
@@ -372,12 +376,17 @@ body {
   }
 }
 
-.hero-title.replaying .chaos-title span,
+.hero-title.replaying .chaos-title span {
+  animation-name: letterReplay;
+  animation-duration: 4.8s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
 .hero-title.replaying .chaos-subtitle span {
   animation-name: letterReplay;
-  animation-duration: 1.5s;
+  animation-duration: 4.2s;
   animation-timing-function: ease-in-out;
-  animation-delay: 0s;
   animation-fill-mode: forwards;
 }
 
