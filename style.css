@@ -505,7 +505,7 @@ body {
 @media (max-width: 768px) {
 
   .hero-title {
-  left: calc(7% + 6px);
+  left: calc(7% + 8px);
   top: 35%;
 }
 
