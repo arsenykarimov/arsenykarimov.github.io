@@ -82,19 +82,12 @@ if (workLink) {
 
 const heroTitle = document.querySelector('.hero-title');
 
-  if (heroTitle) {
-     heroTitle.addEventListener('click', () => {
-     const letters = heroTitle.querySelectorAll(
-     '.chaos-title span, .chaos-subtitle span'
-    );
+if (heroTitle) {
+  heroTitle.addEventListener('click', () => {
+    heroTitle.classList.remove('replaying');
 
-    letters.forEach((letter) => {
-    letter.style.animation = 'none';
-    letter.style.animationDelay = '0s';
+    void heroTitle.offsetWidth;
 
-    void letter.offsetWidth;
-
-    letter.style.animation = '';
-    });
+    heroTitle.classList.add('replaying');
   });
 }
