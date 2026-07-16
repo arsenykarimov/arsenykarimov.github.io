@@ -210,7 +210,7 @@ body {
 /* MENU */
 
 .menu {
-  position: absolute;
+  position: fixed;
   z-index: 3;
   right: 7%;
   top: 8%;
