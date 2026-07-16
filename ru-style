@@ -11,7 +11,15 @@
 
 .hero-title p {
   font-size: 22px;
-  letter-spacing: 20px;
+  letter-spacing: 0;
+}
+
+.chaos-subtitle span {
+  margin-right: 3.2px;
+}
+
+.chaos-subtitle span:last-child {
+  margin-right: 0;
 }
 
 /* RU SMALL BRAND */
@@ -92,31 +100,32 @@
 
   .hero-title p {
     font-size: 13px;
-    letter-spacing: 3.2px;
+    letter-spacing: 0;
+  }
+
+  .chaos-subtitle span {
+    margin-right: 2.2px;
+  }
+
+  .chaos-subtitle span:last-child {
+    margin-right: 0;
   }
 
   .site-brand-small > span {
-
     font-size: 16.5px;
     letter-spacing: 1.55px;
-
   }
 
   .site-brand-small .site-brand-gap {
-  width: 6px;
-
+    width: 6px;
   }
 
   .site-brand-small > small {
-
     font-size: 8.6px;
     letter-spacing: 1.65px;
-
   }
 
   .menu-items a {
-  letter-spacing: 3.6px;
-
+    letter-spacing: 3.6px;
   }
-
 }
