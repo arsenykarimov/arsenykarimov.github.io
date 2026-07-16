@@ -156,31 +156,30 @@ body {
 /* LANGUAGE SWITCH */
 
 .lang-switch {
-  position: fixed;
+  position: absolute;
 
-  top: 8%;
-  right: calc(7% + 62px);
+  top: 0;
+  right: 62px;
 
-  z-index: 65;
+  z-index: 2;
 
   font-family: "Evolventa", sans-serif;
   font-size: 9px;
   line-height: 1;
   letter-spacing: 1.8px;
 
-  color: rgba(232,220,200,.84);
+  color: rgba(232,220,200,0.84);
 
   text-decoration: none;
 
-  opacity: .38;
+  opacity: 0.38;
 
   transition:
-    opacity .45s ease,
-    transform .45s ease;
+    opacity 0.45s ease,
+    transform 0.45s ease;
 }
 
 .lang-switch::after {
-
   content: "";
 
   position: absolute;
@@ -193,22 +192,18 @@ body {
 
   background: currentColor;
 
-  transform: scaleX(.32);
+  transform: scaleX(0.32);
   transform-origin: left center;
 
-  transition: transform .45s ease;
+  transition: transform 0.45s ease;
 }
 
 .lang-switch:hover {
-
-  opacity: .9;
-
+  opacity: 0.9;
 }
 
 .lang-switch:hover::after {
-
   transform: scaleX(1);
-
 }
 
 /* MENU */
@@ -595,25 +590,19 @@ body {
    object-position: center center;
   }
 
-  .lang-switch{
+  .lang-switch {
+  top: 0;
+  right: 50px;
 
-    top: 6%;
+  font-size: 8px;
+  letter-spacing: 1.6px;
 
-    right: calc(5% + 50px);
+  opacity: 0.42;
+}
 
-    font-size: 8px;
-
-    letter-spacing: 1.6px;
-
-    opacity: .42;
-
-  }
-
-  .lang-switch::after{
-
-    bottom: -4px;
-
-  }
+.lang-switch::after {
+  bottom: -4px;
+}
 
 
 /* Menu opened */
