@@ -80,7 +80,7 @@
   <video class="trailer-video" controls playsinline></video>
 </div>
 
-<script src="projects.js?v=1"></script>
+<script src="projects.js?v=2"></script>
 <script src="../work.js?v=38"></script>
 
 </body>
