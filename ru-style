@@ -11,7 +11,7 @@
 
 .hero-title p {
   font-size: 22px;
-  letter-spacing: 3.2px;
+  letter-spacing: 4px;
 }
 
 /* RU SMALL BRAND */
@@ -82,7 +82,7 @@
 @media (max-width: 768px) {
 
   .hero-title h1 {
-    font-size: 28px;
+    font-size: 25px;
     letter-spacing: 2.1px;
   }
 
@@ -92,7 +92,7 @@
 
   .hero-title p {
     font-size: 13px;
-    letter-spacing: 2.2px;
+    letter-spacing: 3.2px;
   }
 
   .site-brand-small > span {
