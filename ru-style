@@ -11,7 +11,7 @@
 
 .hero-title p {
   font-size: 22px;
-  letter-spacing: 3,2px;
+  letter-spacing: 3.2px;
 }
 
 /* RU SMALL BRAND */
