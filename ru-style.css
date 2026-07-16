@@ -101,7 +101,7 @@
 
   html[lang="ru"] .hero-title p {
     font-size: 17px;
-    letter-spacing: 0;
+    letter-spacing: 3;
   }
 
   html[lang="ru"] .chaos-subtitle span {
