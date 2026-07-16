@@ -159,7 +159,7 @@ body {
   position: absolute;
 
   top: 0;
-  right: 62px;
+  right: 124px;
 
   z-index: 2;
 
@@ -592,7 +592,7 @@ body {
 
   .lang-switch {
   top: 0;
-  right: 50px;
+  right: 100px;
 
   font-size: 8px;
   letter-spacing: 1.6px;
