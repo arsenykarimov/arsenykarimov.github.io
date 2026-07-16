@@ -96,20 +96,27 @@
   }
 
   .site-brand-small > span {
-    font-size: 18px;
+
+    font-size: 16.5px;
     letter-spacing: 1.55px;
+
   }
 
   .site-brand-small .site-brand-gap {
-    width: 6px;
+  width: 6px;
+
   }
 
   .site-brand-small > small {
+
     font-size: 8.6px;
-    letter-spacing: 1px;
+    letter-spacing: 1.65px;
+
   }
 
   .menu-items a {
-    letter-spacing: 3.6px;
+  letter-spacing: 3.6px;
+
   }
+
 }
