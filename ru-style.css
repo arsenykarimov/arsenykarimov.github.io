@@ -90,43 +90,43 @@
 
 @media (max-width: 768px) {
 
-  .hero-title h1 {
+  html[lang="ru"] .hero-title h1 {
     font-size: 28px;
     letter-spacing: 2.1px;
   }
 
-  .hero-title .name-gap {
+  html[lang="ru"] .hero-title .name-gap {
     width: 9px;
   }
 
-  .hero-title p {
+  html[lang="ru"] .hero-title p {
     font-size: 13px;
-    letter-spacing: 20;
+    letter-spacing: 0;
   }
 
-  .chaos-subtitle span {
-    margin-right: 2.2px;
+  html[lang="ru"] .chaos-subtitle span {
+    margin-right: 2.75px;
   }
 
-  .chaos-subtitle span:last-child {
+  html[lang="ru"] .chaos-subtitle span:last-child {
     margin-right: 0;
   }
 
-  .site-brand-small > span {
+  html[lang="ru"] .site-brand-small > span {
     font-size: 16.5px;
     letter-spacing: 1.55px;
   }
 
-  .site-brand-small .site-brand-gap {
+  html[lang="ru"] .site-brand-small .site-brand-gap {
     width: 6px;
   }
 
-  .site-brand-small > small {
+  html[lang="ru"] .site-brand-small > small {
     font-size: 8.6px;
     letter-spacing: 2.2px;
   }
 
-  .menu-items a {
+  html[lang="ru"] .menu-items a {
     letter-spacing: 3.6px;
   }
 }
