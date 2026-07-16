@@ -2,17 +2,25 @@
 /* RU HOME BRAND */
 
 .hero-title h1 {
-  font-size: 48px;
+
+  font-size: 46px;
+
   letter-spacing: 3.6px;
+
 }
 
 .hero-title .name-gap {
+
   width: 16px;
+
 }
 
 .hero-title p {
-  font-size: 28px;
-  letter-spacing: 0;
+
+  font-size: 25px;
+
+  letter-spacing: 3.2px;
+
 }
 
 .chaos-subtitle span {
