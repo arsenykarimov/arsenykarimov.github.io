@@ -2,7 +2,7 @@
 /* RU HOME BRAND */
 
 .hero-title h1 {
-  font-size: 65px;
+  font-size: 48px;
   letter-spacing: 3.6px;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .hero-title p {
-  font-size: 26px;
+  font-size: 28px;
   letter-spacing: 0;
 }
 
@@ -91,7 +91,7 @@
 @media (max-width: 768px) {
 
   html[lang="ru"] .hero-title h1 {
-    font-size: 28px;
+    font-size: 30px;
     letter-spacing: 2.1px;
   }
 
@@ -100,7 +100,7 @@
   }
 
   html[lang="ru"] .hero-title p {
-    font-size: 13px;
+    font-size: 17px;
     letter-spacing: 0;
   }
 
