@@ -82,7 +82,7 @@
 @media (max-width: 768px) {
 
   .hero-title h1 {
-    font-size: 31px;
+    font-size: 28px;
     letter-spacing: 2.1px;
   }
 
