@@ -162,7 +162,7 @@ body {
   top: 0;
   right: 124px;
 
-  z-index: 2;
+  z-index: 11;
 
   font-family: "Evolventa", sans-serif;
   font-size: 17px;
@@ -197,10 +197,6 @@ body {
   transform-origin: left center;
 
   transition: transform 0.45s ease;
-}
-
-.lang-switch:hover {
-  opacity: 0.9;
 }
 
 .lang-switch:hover::after {
