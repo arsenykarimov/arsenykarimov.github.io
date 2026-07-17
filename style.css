@@ -217,6 +217,12 @@ body {
   z-index: 100;
 }
 
+/* WORK PLAYER — LANGUAGE SWITCH BELOW PLAYER */
+
+.work-page.player-open .lang-switch {
+  z-index: 60;
+}
+
 /* MENU */
 
 .menu {
