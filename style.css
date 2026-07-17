@@ -210,8 +210,14 @@ body {
 /* LANGUAGE SWITCH — INNER PAGES */
 
 .work-page .lang-switch,
-.showreel-page .lang-switch {
+.showreel-page .lang-switch,
+.about-page .lang-switch,
+.contact-page .lang-switch {
   position: fixed;
+  top: 8%;
+  right: calc(7% + 124px);
+  z-index: 100;
+}
 
   top: 8%;
   right: calc(7% + 124px);
