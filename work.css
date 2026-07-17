@@ -169,7 +169,7 @@
   position: absolute;
 
   left: 50%;
-  bottom: 5%;
+  bottom: 10%;
 
   transform: translateX(-50%);
 
@@ -180,18 +180,17 @@
   line-height: 1;
   letter-spacing: 2.4px;
 
-  color: var(--work-accent);
+  color: color-mix(
+    in srgb,
+    var(--work-accent) 84%,
+    transparent
+  );
 
-  opacity: 0.68;
+  opacity: 0.55;
 
   pointer-events: none;
-
-  transition:
-    opacity 0.4s ease,
-    color 0.4s ease;
 }
 
-.work-transition .work-counter,
 .work-menu-active .work-counter,
 .work-page.player-open .work-counter {
   opacity: 0;
@@ -563,7 +562,7 @@
   }
   
   .work-counter {
-  bottom: 4%;
+  bottom: 10%;
 
   font-size: 10px;
   letter-spacing: 2px;
