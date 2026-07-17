@@ -166,42 +166,19 @@
 /* PROJECT COUNTER */
 
 .work-counter {
-  position: absolute;
-
+  position: fixed;
   left: 50%;
-  bottom: 5%;
+  bottom: 50px;
 
   transform: translateX(-50%);
 
-  z-index: 7;
+  z-index: 9999;
 
-  font-family: "Evolventa", sans-serif;
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 2.4px;
+  color: red;
 
-  color: color-mix(
-    in srgb,
-    var(--work-accent) 68%,
-    transparent
-  );
+  font-size: 40px;
 
-  opacity: 0.72;
-
-  pointer-events: none;
-
-  transition:
-    opacity 0.4s ease,
-    color 0.4s ease;
-}
-
-.work-menu-active .work-counter,
-.work-page.player-open .work-counter {
-  opacity: 0;
-}
-
-.work-transition .work-counter {
-  opacity: 0;
+  opacity: 1;
 }
 
 /* PLAY */
