@@ -200,6 +200,9 @@
   opacity: 0;
 }
 
+.work-transition .work-counter {
+  opacity: 0;
+}
 
 /* PLAY */
 
