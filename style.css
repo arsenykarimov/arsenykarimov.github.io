@@ -207,6 +207,18 @@ body {
   transform: scaleX(1);
 }
 
+/* LANGUAGE SWITCH — INNER PAGES */
+
+.work-page .lang-switch,
+.showreel-page .lang-switch {
+  position: fixed;
+
+  top: 8%;
+  right: calc(7% + 124px);
+
+  z-index: 65;
+}
+
 /* MENU */
 
 .menu {
@@ -604,6 +616,12 @@ body {
 .lang-switch::after {
   bottom: -4px;
 }
+
+  .work-page .lang-switch,
+  .showreel-page .lang-switch {
+    top: 6%;
+    right: calc(5% + 75px);
+  }
 
 
 /* Menu opened */
