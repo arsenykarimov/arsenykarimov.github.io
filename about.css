@@ -306,23 +306,25 @@
   }
 
   .about-content {
-    position: relative;
+  position: relative;
 
-    left: auto;
-    top: auto;
+  left: auto;
+  top: auto;
 
-    transform: none;
+  transform: none;
 
-    width: 84%;
-    max-width: 360px;
+  width: 84%;
+  max-width: 360px;
 
-    margin: 0 auto;
-    padding: 150px 0 80px;
+  margin: 0 auto;
+  padding: 150px 0 80px;
 
-    font-size: 13px;
-    line-height: 1.8;
-    letter-spacing: 0.8px;
-  }
+  font-size: 13px;
+  line-height: 1.8;
+  letter-spacing: 0.8px;
+
+  text-align: left;
+}
 
   .about-content p {
     margin-bottom: 20px;
