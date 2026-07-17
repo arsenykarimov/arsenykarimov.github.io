@@ -120,19 +120,6 @@ html[lang="ru"] .site-brand-small > small {
     margin-right: 0;
   }
 
-  html[lang="ru"] .site-brand-small > span {
-    font-size: 16.5px;
-    letter-spacing: 1.55px;
-  }
-
-  html[lang="ru"] .site-brand-small .site-brand-gap {
-    width: 6px;
-  }
-
-  html[lang="ru"] .site-brand-small > small {
-    font-size: 10.6px;
-    letter-spacing: 2.2px;
-  }
 
   html[lang="ru"] .menu-items a {
     letter-spacing: 3.6px;
