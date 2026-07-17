@@ -313,18 +313,23 @@
 
     transform: none;
 
-    width: 82vw;
+    width: 84%;
+    max-width: 360px;
 
     margin: 0 auto;
     padding: 150px 0 80px;
 
     font-size: 13px;
     line-height: 1.8;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.8px;
   }
 
   .about-content p {
     margin-bottom: 20px;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
 
   .about-content .about-contact-line {
@@ -344,25 +349,25 @@
     font-size: 14px;
     letter-spacing: 5px;
   }
-  
+
   .about-content::before {
-  content: "";
+    content: "";
 
-  width: 112%;
-  height: 116%;
+    width: 112%;
+    height: 116%;
 
-  transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(0,0,0,.68) 0%,
-      rgba(0,0,0,.48) 38%,
-      rgba(0,0,0,.18) 68%,
-      rgba(0,0,0,0) 88%
-    );
+    background:
+      radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,.68) 0%,
+        rgba(0,0,0,.48) 38%,
+        rgba(0,0,0,.18) 68%,
+        rgba(0,0,0,0) 88%
+      );
 
-  filter: blur(16px);
-}
+    filter: blur(16px);
+  }
 
 }
