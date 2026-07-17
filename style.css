@@ -604,6 +604,8 @@ body {
   .lang-switch {
   top: 0;
   right: 75px;
+  
+  z-index: 11;
 
   font-size: 15px;
   letter-spacing: 1.6px;
