@@ -8,6 +8,8 @@ const subtitleText = document.querySelector('#project-subtitle');
 const nextTitleText = document.querySelector('#next-project-title');
 const nextSubtitleText = document.querySelector('#next-project-subtitle');
 
+const projectCounter = document.querySelector('#project-counter');
+
 const currentTitleBlock = document.querySelector('.title-current');
 const nextTitleBlock = document.querySelector('.title-next');
 
@@ -112,6 +114,15 @@ function startTitlePlayTimer() {
   }, 2000);
 }
 
+function updateProjectCounter() {
+  if (!projectCounter) return;
+
+  const currentNumber = String(currentProject + 1).padStart(2, '0');
+  const totalNumber = String(projects.length).padStart(2, '0');
+
+  projectCounter.textContent = `${currentNumber}/${totalNumber}`;
+}
+
 
 function applyProject(index) {
   const project = projects[index];
@@ -145,6 +156,8 @@ function loadFirstProject() {
 
   titleText.textContent = project.title;
   subtitleText.textContent = project.subtitle;
+
+  updateProjectCounter();
 
   document.documentElement.style.setProperty('--work-accent', project.accent);
   document.documentElement.style.setProperty('--current-accent', project.accent);
@@ -218,6 +231,8 @@ function showProject(direction) {
       setTimeout(() => {
         titleText.textContent = nextProject.title;
         subtitleText.textContent = nextProject.subtitle;
+
+        updateProjectCounter();
 
         document.documentElement.style.setProperty('--work-accent', nextProject.accent);
         document.documentElement.style.setProperty('--current-accent', nextProject.accent);
