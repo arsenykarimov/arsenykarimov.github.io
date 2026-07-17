@@ -169,7 +169,7 @@ body {
   line-height: 1;
   letter-spacing: 1.8px;
 
-  color: rgba(232,220,200,0.84);
+  color: var(--work-accent, rgba(232,220,200,0.84));
 
   text-decoration: none;
 
@@ -216,7 +216,7 @@ body {
   top: 8%;
   right: calc(7% + 124px);
 
-  z-index: 65;
+  z-index: 100;
 }
 
 /* MENU */
