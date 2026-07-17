@@ -163,6 +163,43 @@
   color: color-mix(in srgb, var(--next-accent, var(--work-accent)) 84%, transparent);
 }
 
+/* PROJECT COUNTER */
+
+.work-counter {
+  position: absolute;
+
+  left: 50%;
+  bottom: 5%;
+
+  transform: translateX(-50%);
+
+  z-index: 7;
+
+  font-family: "Evolventa", sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 2.4px;
+
+  color: color-mix(
+    in srgb,
+    var(--work-accent) 68%,
+    transparent
+  );
+
+  opacity: 0.72;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.4s ease,
+    color 0.4s ease;
+}
+
+.work-menu-active .work-counter,
+.work-page.player-open .work-counter {
+  opacity: 0;
+}
+
 
 /* PLAY */
 
@@ -528,6 +565,13 @@
     border-bottom: 15px solid transparent;
     border-left: 23px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
   }
+  
+  .work-counter {
+  bottom: 4%;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
 
     .work-arrow {
     width: 18%;
