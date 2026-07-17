@@ -150,6 +150,10 @@ function loadFirstProject() {
   document.documentElement.style.setProperty('--current-accent', project.accent);
 
   applyProject(currentProject);
+  loopVideo.addEventListener('canplay', () => {
+  loopVideo.classList.add('visible');
+  }, { once: true });
+  
   preloadWorkPosters();
   showTitle();
   startTitlePlayTimer();
