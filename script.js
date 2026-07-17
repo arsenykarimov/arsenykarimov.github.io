@@ -50,11 +50,19 @@ function preloadWorkPosters() {
     return;
   }
 
-  const posters = [
-    'posters/retrograde.jpg',
-    'posters/paraneba.jpg',
-    'posters/anikushin.jpg'
-  ];
+  const isRuPage = window.location.pathname.includes('/ru/');
+
+  const posters = isRuPage
+    ? [
+        '../posters/retrograde.jpg',
+        '../posters/paraneba.jpg',
+        '../posters/anikushin.jpg'
+      ]
+    : [
+        'posters/retrograde.jpg',
+        'posters/paraneba.jpg',
+        'posters/anikushin.jpg'
+      ];
 
   posters.forEach((src) => {
     const img = new Image();
