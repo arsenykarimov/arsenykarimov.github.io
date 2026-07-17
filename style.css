@@ -667,27 +667,29 @@ body {
   .menu {
   position: fixed;
 
-  top: 6%;
+  top: 5%;
   right: 5%;
 
-  width: 70px;
+  width: 82px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-  .menu-icon {
-    width: 70px;
-    height: 60px;
-    opacity: 1;
-    animation: none;
-    z-index: 10;
-  }
+.menu-icon {
+  width: 82px;
+  height: 68px;
 
-  .menu-icon span {
-    width: 36px;
-  }
+  opacity: 1;
+  animation: none;
+
+  z-index: 10;
+}
+
+.menu-icon span {
+  width: 42px;
+}
 
   .menu-items {
     position: fixed;
