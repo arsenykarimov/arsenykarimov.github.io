@@ -33,18 +33,18 @@
 
 /* RU SMALL BRAND */
 
-.site-brand-small > span {
-  font-size: 18.8px;
-  letter-spacing: 1.7px;
+html[lang="ru"] .site-brand-small > span {
+  font-size: 16.5px;
+  letter-spacing: 1.55px;
 }
 
-.site-brand-small .site-brand-gap {
+html[lang="ru"] .site-brand-small .site-brand-gap {
   width: 6px;
 }
 
-.site-brand-small > small {
-  font-size: 9px;
-  letter-spacing: 1.15px;
+html[lang="ru"] .site-brand-small > small {
+  font-size: 10.6px;
+  letter-spacing: 2.2px;
 }
 
 /* RU MENU */
