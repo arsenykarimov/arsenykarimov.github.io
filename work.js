@@ -120,7 +120,7 @@ function updateProjectCounter() {
   const currentNumber = String(currentProject + 1).padStart(2, '0');
   const totalNumber = String(projects.length).padStart(2, '0');
 
-  projectCounter.textContent = `${currentNumber}/${totalNumber}`;
+  projectCounter.innerHTML = `${currentNumber}&nbsp;&nbsp;/&nbsp;&nbsp;${totalNumber}`;
 }
 
 
