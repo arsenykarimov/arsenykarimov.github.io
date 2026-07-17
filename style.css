@@ -214,10 +214,6 @@ body {
 .about-page .lang-switch,
 .contact-page .lang-switch {
   position: fixed;
-  top: 8%;
-  right: calc(7% + 124px);
-  z-index: 100;
-}
 
   top: 8%;
   right: calc(7% + 124px);
@@ -665,10 +661,17 @@ body {
   /* MOBILE MENU */
 
   .menu {
-    right: 5%;
-    top: 6%;
-    width: auto;
-  }
+  position: fixed;
+
+  top: 6%;
+  right: 5%;
+
+  width: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
   .menu-icon {
     width: 70px;
