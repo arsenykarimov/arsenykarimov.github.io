@@ -10,8 +10,11 @@
 
 .work-viewer {
   position: relative;
+
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
+
   overflow: hidden;
 }
 
@@ -169,7 +172,7 @@
   position: absolute;
 
   left: 50%;
-  bottom: 12%;
+  bottom: clamp(48px, 10dvh, 96px);
 
   transform: translateX(-50%);
 
@@ -562,8 +565,11 @@
   }
   
   .work-counter {
-  bottom: 15%;
 
+  bottom: calc(
+  48px + env(safe-area-inset-bottom, 0px)
+  );
+    
   font-size: 12px;
   letter-spacing: 2px;
 }
