@@ -148,6 +148,7 @@
     var(--contact-accent) 84%,
     transparent
   );
+  transition: opacity .22s ease;
 }
 
 .contact-menu-button span:nth-child(1) {
@@ -160,6 +161,11 @@
 
 .contact-menu-button span:nth-child(3) {
   top: 26px;
+}
+
+.contact-menu-active .contact-menu-button span:nth-child(1),
+.contact-menu-active .contact-menu-button span:nth-child(3) {
+  opacity: 0;
 }
 
 .contact-menu-overlay {
