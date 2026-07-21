@@ -594,6 +594,108 @@ body {
   display: none;
 }
 
+/* OLD BROWSER / SMART TV FALLBACK */
+
+/* WORK — TEXT */
+
+.work-page .site-brand-small,
+.work-page .lang-switch,
+.work-title h1,
+.work-title p,
+.work-counter,
+.work-menu-links a,
+.work-close {
+  color: rgba(246,255,173,0.84);
+}
+
+
+/* WORK — HAMBURGER */
+
+.work-menu-button span {
+  background: rgba(246,255,173,0.84);
+}
+
+
+/* WORK — PLAY */
+
+.work-play {
+  border-color: rgba(246,255,173,0.84);
+}
+
+.work-play span {
+  border-left-color: rgba(246,255,173,0.84);
+}
+
+
+/* WORK — ARROWS */
+
+.work-arrow-left::before {
+  border-left-color: rgba(246,255,173,0.84);
+  border-bottom-color: rgba(246,255,173,0.84);
+}
+
+.work-arrow-right::before {
+  border-right-color: rgba(246,255,173,0.84);
+  border-bottom-color: rgba(246,255,173,0.84);
+}
+
+
+/* SHOWREEL — TEXT */
+
+.showreel-page .site-brand-small,
+.showreel-page .lang-switch,
+.showreel-title h1,
+.showreel-menu-links a,
+.showreel-close {
+  color: rgba(255,252,235,0.84);
+}
+
+
+/* SHOWREEL — HAMBURGER */
+
+.showreel-menu-button span {
+  background: rgba(255,252,235,0.84);
+}
+
+
+/* SHOWREEL — PLAY */
+
+.showreel-play {
+  border-color: rgba(255,252,235,0.84);
+}
+
+.showreel-play span {
+  border-left-color: rgba(255,252,235,0.84);
+}
+
+
+/* ABOUT */
+
+.about-page .site-brand-small,
+.about-page .lang-switch,
+.about-content,
+.about-menu-links a {
+  color: rgba(255,252,235,0.84);
+}
+
+.about-menu-button span {
+  background: rgba(255,252,235,0.84);
+}
+
+
+/* CONTACT */
+
+.contact-page .site-brand-small,
+.contact-page .lang-switch,
+.contact-link,
+.contact-menu-links a {
+  color: rgba(255,252,235,0.84);
+}
+
+.contact-menu-button span {
+  background: rgba(255,252,235,0.84);
+}
+
 /* MOBILE */
 
 @media (max-width: 768px) {
