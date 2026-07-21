@@ -194,7 +194,14 @@
     transparent
   );
 
-  transition: opacity .22s ease;
+  transition: opacity 0.22s ease;
+}
+
+.about-menu-active .about-menu-links a {
+
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 .about-menu-button span:nth-child(1) {
