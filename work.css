@@ -212,7 +212,12 @@
   height: 92px;
 
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
+  border: 1px solid var(--work-accent);
+  border: 1px solid color-mix(
+  in srgb,
+  var(--work-accent) 84%,
+  transparent
+);
 
   background: transparent;
 
@@ -242,7 +247,12 @@
 
   border-top: 18px solid transparent;
   border-bottom: 18px solid transparent;
-  border-left: 28px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
+  border-left: 28px solid var(--work-accent);
+  border-left: 28px solid color-mix(
+  in srgb,
+  var(--work-accent) 84%,
+  transparent
+);
 }
 
 
