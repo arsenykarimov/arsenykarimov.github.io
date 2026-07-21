@@ -194,7 +194,7 @@
     transparent
   );
 
-  transition: opacity .8s ease;
+  transition: opacity .22s ease;
 }
 
 .about-menu-button span:nth-child(1) {
