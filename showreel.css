@@ -206,7 +206,7 @@
   opacity: 0;
   pointer-events: none;
 
-  transition: opacity .7s ease;
+  transition: opacity .22s ease;
 }
 
 .showreel-menu-active .showreel-menu-overlay {
