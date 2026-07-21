@@ -104,11 +104,12 @@
   z-index: 5;
 
   border-radius: 50%;
+  border: 1px solid var(--showreel-accent);
   border: 1px solid color-mix(
-    in srgb,
-    var(--showreel-accent) 84%,
-    transparent
-  );
+  in srgb,
+  var(--showreel-accent) 84%,
+  transparent
+);
 
   background: transparent;
 
@@ -134,11 +135,12 @@
   border-top: 18px solid transparent;
   border-bottom: 18px solid transparent;
 
+  border-left: 28px solid var(--showreel-accent);
   border-left: 28px solid color-mix(
-    in srgb,
-    var(--showreel-accent) 84%,
-    transparent
-  );
+  in srgb,
+  var(--showreel-accent) 84%,
+  transparent
+);
 }
 
 .showreel-play.visible {
