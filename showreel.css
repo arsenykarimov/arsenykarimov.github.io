@@ -238,12 +238,47 @@
   letter-spacing: 5px;
 
   color: color-mix(
+  in srgb,
+  var(--showreel-accent) 84%,
+  transparent
+  );
+
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+
+  transition:
+  opacity 0.22s ease,
+  transform 0.22s ease,
+  lfilter 0.22s ease;
+}
+
+.showreel-menu-active .showreel-menu-links a {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.showreel-menu-button span {
+  position: absolute;
+  right: 0;
+
+  width: 42px;
+  height: 1px;
+
+  background: color-mix(
     in srgb,
     var(--showreel-accent) 84%,
     transparent
   );
+
+  transition: opacity 0.22s ease;
 }
 
+.showreel-menu-active .showreel-menu-button span:nth-child(1),
+.showreel-menu-active .showreel-menu-button span:nth-child(3) {
+  opacity: 0;
+}
 
 /* PLAYER */
 
