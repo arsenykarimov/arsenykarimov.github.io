@@ -177,7 +177,7 @@
   opacity: 0;
   pointer-events: none;
 
-  transition: opacity .7s ease;
+  transition: opacity .22s ease;
 }
 
 .contact-menu-active .contact-menu-overlay {
@@ -211,6 +211,21 @@
     var(--contact-accent) 84%,
     transparent
   );
+  
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    filter 0.22s ease;
+}
+
+.contact-menu-active .contact-menu-links a {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 
