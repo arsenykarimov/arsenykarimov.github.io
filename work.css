@@ -397,7 +397,7 @@
   width: 42px;
   height: 1px;
 
-  background: color-mix(in srgb, var(--work-accent) 84%, transparent);
+  background: #F6FFAD;
 
   transition: opacity 0.22s ease;
 }
