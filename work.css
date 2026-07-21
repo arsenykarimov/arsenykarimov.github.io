@@ -221,8 +221,8 @@
 
   background: transparent;
 
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
 
   z-index: 7;
 
@@ -397,7 +397,7 @@
   width: 42px;
   height: 1px;
 
-  background: #F6FFAD;
+  background: color-mix(in srgb, var(--work-accent) 84%, transparent);
 
   transition: opacity 0.22s ease;
 }
