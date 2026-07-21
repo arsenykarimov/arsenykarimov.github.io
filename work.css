@@ -389,7 +389,7 @@
 
   background: color-mix(in srgb, var(--work-accent) 84%, transparent);
 
-  transition: opacity 0.8s ease;
+  transition: opacity 0.22s ease;
 }
 
 .work-menu-button span:nth-child(1) {
@@ -454,9 +454,9 @@
   filter: blur(3px);
 
   transition:
-    opacity 0.7s ease,
-    transform 0.7s ease,
-    filter 0.7s ease;
+  opacity 0.22s ease,
+  transform 0.22s ease,
+  filter 0.22s ease;
 }
 
 .work-menu-active .work-menu-links a {
