@@ -143,8 +143,8 @@ function applyProject(index) {
   trailerVideo.load();
 
   loopVideo.addEventListener('canplay', () => {
-  loopVideo.play().catch(() => {});
-}, { once: true });
+    // Don't play yet - wait for visibility sync
+  }, { once: true });
 
   player.classList.remove('visible');
   document.body.classList.remove('player-open');
@@ -167,9 +167,10 @@ function loadFirstProject() {
 
   applyProject(currentProject);
   loopVideo.addEventListener('canplay', () => {
-    // Wait for the poster fade (FADE_MS) before showing the loop
+    // Wait for the poster fade (FADE_MS) before showing and playing the loop
     setTimeout(() => {
       loopVideo.classList.add('visible');
+      loopVideo.play().catch(() => {});
     }, FADE_MS);
   }, { once: true });
   
@@ -264,9 +265,10 @@ function showProject(direction) {
     document.body.style.setProperty('--current-accent', nextProject.accent);
 
     loopVideo.classList.remove('instant');
-    // Show the loop after the FADE_MS timer completes
+    // Show and play the loop after the FADE_MS timer completes
     setTimeout(() => {
       loopVideo.classList.add('visible');
+      loopVideo.play().catch(() => {});
     }, FADE_MS);
 
     isSwitching = false;
