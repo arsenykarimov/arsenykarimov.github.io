@@ -236,21 +236,14 @@ body {
   color: var(--accent);
   opacity: 1;
   text-shadow: var(--ui-shadow);
-
-  transition:
-    opacity 0.45s ease,
-    transform 0.45s ease,
-    color var(--work-fade, 0.6s) ease;
 }
 
-/* Inner-page brand: page accent, solid, shadowed, recolours with the accent. */
+/* Inner-page brand: page accent, solid, shadowed. */
 .work-page .site-brand-small,
 .showreel-page .site-brand-small,
 .contact-page .site-brand-small {
   color: var(--accent);
   text-shadow: var(--ui-shadow);
-
-  transition: color var(--work-fade, 0.6s) ease;
 }
 
 .work-page .site-brand-small > span,
