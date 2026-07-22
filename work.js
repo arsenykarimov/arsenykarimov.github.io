@@ -133,6 +133,7 @@ function applyProject(index) {
 
   loopVideo.classList.remove('visible');
   loopVideo.pause();
+  loopVideo.currentTime = 0;
 
   loopVideo.poster = project.poster;
   loopVideo.src = project.loop;
@@ -141,10 +142,6 @@ function applyProject(index) {
   trailerVideo.pause();
   trailerVideo.src = project.trailer;
   trailerVideo.load();
-
-  loopVideo.addEventListener('canplay', () => {
-    // Don't play yet - wait for visibility sync
-  }, { once: true });
 
   player.classList.remove('visible');
   document.body.classList.remove('player-open');
