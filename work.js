@@ -167,7 +167,10 @@ function loadFirstProject() {
 
   applyProject(currentProject);
   loopVideo.addEventListener('canplay', () => {
-  loopVideo.classList.add('visible');
+    // Wait for the poster fade (FADE_MS) before showing the loop
+    setTimeout(() => {
+      loopVideo.classList.add('visible');
+    }, FADE_MS);
   }, { once: true });
   
   preloadWorkPosters();
@@ -261,7 +264,10 @@ function showProject(direction) {
     document.body.style.setProperty('--current-accent', nextProject.accent);
 
     loopVideo.classList.remove('instant');
-    loopVideo.classList.add('visible');
+    // Show the loop after the FADE_MS timer completes
+    setTimeout(() => {
+      loopVideo.classList.add('visible');
+    }, FADE_MS);
 
     isSwitching = false;
     playVisible = false;
