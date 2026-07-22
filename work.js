@@ -38,6 +38,8 @@ let playVisible = false;
 let touchStartX = 0;
 let touchStartY = 0;
 let isSwitching = false;
+let switchTimer = null;
+let pendingCommit = null;
 
 let workPostersReady = false;
 let titlePlayTimer = null;
@@ -174,12 +176,22 @@ function loadFirstProject() {
 }
 
 
+// Instantly finalise an in-flight transition so the next one can start clean.
+function settleTransition() {
+  if (pendingCommit) {
+    clearTimeout(switchTimer);
+    switchTimer = null;
+    pendingCommit(true);
+  }
+}
+
+
 function showProject(direction) {
-  if (isSwitching) return;
+  // Finish any in-flight transition immediately so the arrows stay responsive
+  // even while a poster/loop is still loading — no lockout, no waiting.
+  settleTransition();
 
-  isSwitching = true;
   hoverActive = false;
-
   stopTitlePlayTimer();
   menu.close();
   showTitle();
@@ -194,71 +206,71 @@ function showProject(direction) {
   const previousPoster = activePoster;
   const nextPoster = hiddenPoster;
 
-  // Load the incoming still into the (invisible) hidden poster up front.
+  isSwitching = true;
+  currentProject = nextIndex;
+
+  // Drop the previous loop clip with no fade (its still matches underneath).
+  loopVideo.classList.add('instant');
+  loopVideo.classList.remove('visible');
+  loopVideo.pause();
+
+  // Title + accent + counter update on the same frame as the poster.
+  nextTitleText.textContent = nextProject.title;
+  nextSubtitleText.textContent = nextProject.subtitle;
+  document.body.style.setProperty('--next-accent', nextProject.accent);
+  document.body.style.setProperty('--accent', nextProject.accent);
+  updateProjectCounter();
+  nextTitleBlock.classList.add('cross-in');
+  currentTitleBlock.classList.add('cross-out');
+
+  // Outgoing poster stays fully opaque underneath.
+  previousPoster.style.zIndex = '1';
+
+  // Incoming poster goes on top; reset to its hidden / un-zoomed start WITHOUT
+  // animating the reset, then fade in + zoom over the outgoing one. We do NOT
+  // wait for the image to decode — it simply fades in when it paints, so a slow
+  // asset never blocks the next press.
   nextPoster.src = nextProject.poster;
+  nextPoster.style.zIndex = '2';
+  nextPoster.style.transition = 'none';
+  nextPoster.classList.remove('active');
+  void nextPoster.offsetWidth;
+  nextPoster.style.transition = '';
+  nextPoster.classList.add('active');
 
-  const runTransition = () => {
-    currentProject = nextIndex;
+  activePoster = nextPoster;
+  hiddenPoster = previousPoster;
 
-    // The previous loop clip sits above the posters — drop it with no fade so
-    // the poster crossfade underneath is visible. The still shows the same
-    // frame, so the swap is seamless.
-    loopVideo.classList.add('instant');
-    loopVideo.classList.remove('visible');
-    loopVideo.pause();
+  // Prepare the new loop clip (its poster attribute matches the still).
+  applyProject(currentProject);
 
-    // Title + accent colours + counter all recolour on the SAME frame as the
-    // poster crossfade. --accent drives the UI (counter, arrows, logo),
-    // so it must change now, not at the end — otherwise the UI lags ~1s behind.
-    nextTitleText.textContent = nextProject.title;
-    nextSubtitleText.textContent = nextProject.subtitle;
-    document.body.style.setProperty('--next-accent', nextProject.accent);
-    document.body.style.setProperty('--accent', nextProject.accent);
-    updateProjectCounter();
-    nextTitleBlock.classList.add('cross-in');
-    currentTitleBlock.classList.add('cross-out');
+  // Commit the end state. commit(true) finalises instantly (on interrupt):
+  // snap the incoming poster fully opaque so it's a solid layer for the next.
+  const commit = (instant) => {
+    if (instant) {
+      nextPoster.style.transition = 'none';
+      nextPoster.classList.add('active');
+      void nextPoster.offsetWidth;
+      nextPoster.style.transition = '';
+    }
 
-    // Incoming poster goes on top and is reset to its hidden / un-zoomed start
-    // WITHOUT animating the reset, then fades in AND zooms as a single gesture
-    // over the still-opaque outgoing poster (which stays put — no flash).
-    nextPoster.style.zIndex = '2';
-    previousPoster.style.zIndex = '1';
-    nextPoster.style.transition = 'none';
-    nextPoster.classList.remove('active');
-    void nextPoster.offsetWidth;
-    nextPoster.style.transition = '';
-    nextPoster.classList.add('active');
+    previousPoster.classList.remove('active');
 
-    activePoster = nextPoster;
-    hiddenPoster = previousPoster;
+    titleText.textContent = nextProject.title;
+    subtitleText.textContent = nextProject.subtitle;
+    document.body.style.setProperty('--current-accent', nextProject.accent);
 
-    // Prepare the new loop clip (its poster attribute matches the still).
-    applyProject(currentProject);
+    loopVideo.classList.remove('instant');
+    loopVideo.classList.add('visible');
 
-    // When the crossfade lands, everything commits together.
-    setTimeout(() => {
-      previousPoster.classList.remove('active');
-
-      titleText.textContent = nextProject.title;
-      subtitleText.textContent = nextProject.subtitle;
-      document.body.style.setProperty('--current-accent', nextProject.accent);
-
-      loopVideo.classList.remove('instant');
-      loopVideo.classList.add('visible');
-
-      isSwitching = false;
-      playVisible = false;
-      startTitlePlayTimer();
-    }, FADE_MS);
+    isSwitching = false;
+    playVisible = false;
+    pendingCommit = null;
+    startTitlePlayTimer();
   };
 
-  // Start the moment the incoming poster is decodable — instant for the
-  // already-preloaded posters, a short wait otherwise.
-  if (nextPoster.decode) {
-    nextPoster.decode().then(runTransition).catch(runTransition);
-  } else {
-    runTransition();
-  }
+  pendingCommit = commit;
+  switchTimer = setTimeout(() => commit(false), FADE_MS);
 }
 
 
@@ -403,8 +415,7 @@ workViewer.addEventListener('touchend', (event) => {
 
   if (
     menu.isOpen() ||
-    player.classList.contains('visible') ||
-    isSwitching
+    player.classList.contains('visible')
   ) {
     return;
   }
