@@ -21,8 +21,6 @@ const arrowLeft = document.querySelector('.work-arrow-left');
 const arrowRight = document.querySelector('.work-arrow-right');
 const workViewer = document.querySelector('.work-viewer');
 
-const workMenuButton = document.querySelector('.menu-button');
-const workMenuOverlay = document.querySelector('.menu-overlay');
 
 const canHover = window.matchMedia('(hover: hover)').matches;
 
@@ -36,7 +34,6 @@ let activePoster = posterA;
 let hiddenPoster = posterB;
 
 let playVisible = false;
-let workMenuOpen = false;
 
 let touchStartX = 0;
 let touchStartY = 0;
@@ -93,7 +90,7 @@ function showPlay() {
 
 function canRunTitlePlayTimer() {
   return (
-    !workMenuOpen &&
+    !menu.isOpen() &&
     !isSwitching &&
     !player.classList.contains('visible') &&
     !hoverActive
@@ -184,7 +181,7 @@ function showProject(direction) {
   hoverActive = false;
 
   stopTitlePlayTimer();
-  closeWorkMenu();
+  menu.close();
   showTitle();
 
   const nextIndex =
@@ -265,36 +262,9 @@ function showProject(direction) {
 }
 
 
-function openWorkMenu() {
-  stopTitlePlayTimer();
-
-  currentTitleBlock.classList.add('hidden');
-  nextTitleBlock.classList.add('hidden');
-
-  playButton.classList.remove('visible');
-  playVisible = false;
-
-  document.body.classList.add('menu-active');
-
-  workMenuOpen = true;
-}
-
-
-function closeWorkMenu() {
-  document.body.classList.remove('menu-active');
-
-  workMenuOpen = false;
-
-  if (!player.classList.contains('visible') && !isSwitching) {
-    showTitle();
-    startTitlePlayTimer();
-  }
-}
-
-
 workViewer.addEventListener('click', (event) => {
   if (
-    workMenuOpen ||
+    menu.isOpen() ||
     isSwitching ||
     event.target.closest('.work-arrow') ||
     event.target.closest('.work-play') ||
@@ -321,7 +291,7 @@ workViewer.addEventListener('click', (event) => {
 if (canHover) {
   workViewer.addEventListener('mousemove', (event) => {
     if (
-      workMenuOpen ||
+      menu.isOpen() ||
       isSwitching ||
       player.classList.contains('visible') ||
       event.target.closest('.work-arrow') ||
@@ -360,9 +330,7 @@ if (canHover) {
 playButton.addEventListener('click', () => {
   stopTitlePlayTimer();
   hoverActive = false;
-  document.body.classList.remove('menu-active');
-  workMenuOpen = false;
-
+  menu.close();
 
   document.body.classList.add('player-open');
   player.classList.add('visible');
@@ -393,19 +361,20 @@ arrowLeft.addEventListener('click', () => {
 });
 
 
-workMenuButton.addEventListener('click', () => {
-  if (workMenuOpen) {
-    closeWorkMenu();
-  } else {
-    openWorkMenu();
-  }
-});
-
-
-workMenuOverlay.addEventListener('click', (event) => {
-  if (!event.target.closest('.menu-links')) {
-    closeWorkMenu();
-  }
+const menu = initMenu({
+  onOpen() {
+    stopTitlePlayTimer();
+    currentTitleBlock.classList.add('hidden');
+    nextTitleBlock.classList.add('hidden');
+    playButton.classList.remove('visible');
+    playVisible = false;
+  },
+  onClose() {
+    if (!player.classList.contains('visible') && !isSwitching) {
+      showTitle();
+      startTitlePlayTimer();
+    }
+  },
 });
 
 
@@ -425,15 +394,15 @@ workViewer.addEventListener('touchend', (event) => {
   if (Math.abs(diffX) < 60 && Math.abs(diffY) < 60) return;
 
   if (Math.abs(diffY) > Math.abs(diffX)) {
-    if (diffY < -60 && workMenuOpen) {
-      closeWorkMenu();
+    if (diffY < -60 && menu.isOpen()) {
+      menu.close();
     }
 
     return;
   }
 
   if (
-    workMenuOpen ||
+    menu.isOpen() ||
     player.classList.contains('visible') ||
     isSwitching
   ) {

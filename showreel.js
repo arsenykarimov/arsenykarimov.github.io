@@ -4,8 +4,6 @@ const player = document.querySelector('.showreel-player');
 const video = document.querySelector('.showreel-video');
 const closeButton = document.querySelector('.showreel-close');
 
-const menuButton = document.querySelector('.menu-button');
-const menuOverlay = document.querySelector('.menu-overlay');
 const viewer = document.querySelector('.showreel-viewer');
 
 const canHover = window.matchMedia('(hover: hover)').matches;
@@ -13,7 +11,6 @@ const canHover = window.matchMedia('(hover: hover)').matches;
 const showreelUrl = "https://pub-e6c268da1b654b929cf0eb9763a0a6e1.r2.dev/Trailers/showreel.mp4";
 
 let playVisible = false;
-let menuOpen = false;
 let hoverActive = false;
 let titlePlayTimer = null;
 
@@ -40,7 +37,7 @@ function showPlay() {
 
 function canRunTitlePlayTimer() {
   return (
-    !menuOpen &&
+    !menu.isOpen() &&
     !player.classList.contains('visible') &&
     !hoverActive
   );
@@ -70,9 +67,8 @@ function openPlayer() {
   stopTitlePlayTimer();
   hoverActive = false;
 
-  document.body.classList.remove('menu-active');
-  menuOpen = false;
-  
+  menu.close();
+
   playButton.classList.remove('visible');
   playVisible = false;
 
@@ -101,7 +97,7 @@ function closePlayer() {
 
 viewer.addEventListener('click', (event) => {
   if (
-    menuOpen ||
+    menu.isOpen() ||
     player.classList.contains('visible') ||
     event.target.closest('.showreel-play') ||
     event.target.closest('.menu-button') ||
@@ -126,7 +122,7 @@ viewer.addEventListener('click', (event) => {
 if (canHover) {
   viewer.addEventListener('mousemove', (event) => {
     if (
-      menuOpen ||
+      menu.isOpen() ||
       player.classList.contains('visible') ||
       event.target.closest('.menu-button') ||
       event.target.closest('.menu-overlay') ||
@@ -170,38 +166,17 @@ closeButton.addEventListener('click', () => {
 });
 
 
-menuButton.addEventListener('click', () => {
-  if (menuOpen) {
-    document.body.classList.remove('menu-active');
-    menuOpen = false;
-
+const menu = initMenu({
+  onOpen() {
+    stopTitlePlayTimer();
+    title.classList.add('hidden');
+    playButton.classList.remove('visible');
+    playVisible = false;
+  },
+  onClose() {
     showTitle();
     startTitlePlayTimer();
-
-    return;
-  }
-
-  stopTitlePlayTimer();
-
-  document.body.classList.add('menu-active');
-
-  title.classList.add('hidden');
-  playButton.classList.remove('visible');
-
-  playVisible = false;
-  menuOpen = true;
-});
-
-
-menuOverlay.addEventListener('click', (event) => {
-  if (!event.target.closest('.menu-links')) {
-    document.body.classList.remove('menu-active');
-
-    menuOpen = false;
-
-    showTitle();
-    startTitlePlayTimer();
-  }
+  },
 });
 
 
