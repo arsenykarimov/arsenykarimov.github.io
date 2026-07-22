@@ -1,7 +1,3 @@
-:root {
-  --contact-accent: #FFFCEB;
-}
-
 .contact-page {
   margin: 0;
   background: #000;
@@ -79,7 +75,7 @@
 
   text-align: center;
 
-  color: var(--contact-accent);
+  color: var(--accent);
 
   transition:
     opacity .6s ease,
@@ -194,7 +190,7 @@
 
   text-decoration: none;
 
-  color: var(--contact-accent);
+  color: var(--accent);
 
   opacity: .84;
 
@@ -206,122 +202,12 @@
 }
 
 
-/* MENU */
+/* MENU (component is shared in style.css) */
 
-.contact-menu-button {
-  position: fixed;
-
-  right: 7%;
-  top: 8%;
-
-  z-index: 60;
-
-  width: 82px;
-  height: 68px;
-
-  background: transparent;
-  border: 0;
-
-  cursor: pointer;
-}
-
-.contact-menu-button span {
-  position: absolute;
-  right: 0;
-
-  width: 42px;
-  height: 1px;
-
-  background: var(--contact-accent);
-
-  transition: opacity .22s ease;
-}
-
-.contact-menu-button span:nth-child(1) {
-  top: 0;
-}
-
-.contact-menu-button span:nth-child(2) {
-  top: 13px;
-}
-
-.contact-menu-button span:nth-child(3) {
-  top: 26px;
-}
-
-.contact-menu-active .contact-menu-button span:nth-child(1),
-.contact-menu-active .contact-menu-button span:nth-child(3) {
-  opacity: 0;
-}
-
-.contact-menu-overlay {
-  position: fixed;
-  inset: 0;
-
-  z-index: 30;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: rgba(0,0,0,.78);
-
-  opacity: 0;
-  pointer-events: none;
-
-  transition: opacity .22s ease;
-}
-
-.contact-menu-active .contact-menu-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.contact-menu-active .contact-content {
+.menu-active .contact-content {
   opacity: 0;
   filter: blur(4px);
   pointer-events: none;
-}
-
-.contact-menu-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 34px;
-}
-
-.contact-menu-links a {
-  text-decoration: none;
-
-  font-family: "Evolventa", sans-serif;
-
-  font-size: 15px;
-  letter-spacing: 5px;
-
-  color: var(--contact-accent);
-
-  opacity: 0;
-  transform: translateY(8px);
-  filter: blur(3px);
-
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease,
-    filter 0.22s ease;
-}
-
-.contact-menu-active .contact-menu-links a {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-
-/* BRAND */
-
-.site-brand-small {
-  color: var(--contact-accent);
 }
 
 
@@ -407,20 +293,6 @@
       );
 
     filter: blur(16px);
-  }
-
-  .contact-menu-button {
-    right: 5%;
-    top: 5%;
-  }
-
-  .contact-menu-links {
-    gap: 30px;
-  }
-
-  .contact-menu-links a {
-    font-size: 14px;
-    letter-spacing: 5px;
   }
 
 }

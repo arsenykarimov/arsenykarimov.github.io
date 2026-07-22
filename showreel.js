@@ -4,8 +4,8 @@ const player = document.querySelector('.showreel-player');
 const video = document.querySelector('.showreel-video');
 const closeButton = document.querySelector('.showreel-close');
 
-const menuButton = document.querySelector('.showreel-menu-button');
-const menuOverlay = document.querySelector('.showreel-menu-overlay');
+const menuButton = document.querySelector('.menu-button');
+const menuOverlay = document.querySelector('.menu-overlay');
 const viewer = document.querySelector('.showreel-viewer');
 
 const canHover = window.matchMedia('(hover: hover)').matches;
@@ -70,7 +70,7 @@ function openPlayer() {
   stopTitlePlayTimer();
   hoverActive = false;
 
-  document.body.classList.remove('showreel-menu-active');
+  document.body.classList.remove('menu-active');
   menuOpen = false;
   
   playButton.classList.remove('visible');
@@ -104,8 +104,8 @@ viewer.addEventListener('click', (event) => {
     menuOpen ||
     player.classList.contains('visible') ||
     event.target.closest('.showreel-play') ||
-    event.target.closest('.showreel-menu-button') ||
-    event.target.closest('.showreel-menu-overlay')
+    event.target.closest('.menu-button') ||
+    event.target.closest('.menu-overlay')
   ) {
     return;
   }
@@ -128,8 +128,8 @@ if (canHover) {
     if (
       menuOpen ||
       player.classList.contains('visible') ||
-      event.target.closest('.showreel-menu-button') ||
-      event.target.closest('.showreel-menu-overlay') ||
+      event.target.closest('.menu-button') ||
+      event.target.closest('.menu-overlay') ||
       event.target.closest('.showreel-play')
     ) {
       return;
@@ -172,7 +172,7 @@ closeButton.addEventListener('click', () => {
 
 menuButton.addEventListener('click', () => {
   if (menuOpen) {
-    document.body.classList.remove('showreel-menu-active');
+    document.body.classList.remove('menu-active');
     menuOpen = false;
 
     showTitle();
@@ -183,7 +183,7 @@ menuButton.addEventListener('click', () => {
 
   stopTitlePlayTimer();
 
-  document.body.classList.add('showreel-menu-active');
+  document.body.classList.add('menu-active');
 
   title.classList.add('hidden');
   playButton.classList.remove('visible');
@@ -194,8 +194,8 @@ menuButton.addEventListener('click', () => {
 
 
 menuOverlay.addEventListener('click', (event) => {
-  if (!event.target.closest('.showreel-menu-links')) {
-    document.body.classList.remove('showreel-menu-active');
+  if (!event.target.closest('.menu-links')) {
+    document.body.classList.remove('menu-active');
 
     menuOpen = false;
 

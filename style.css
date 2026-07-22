@@ -27,6 +27,24 @@ body {
   font-family: 'Evolventa', sans-serif;
 }
 
+/* PER-PAGE ACCENT — one shared token used by the shell (brand, lang, menu).
+   On the work page it is also updated per project by work.js. */
+.work-page {
+  --accent: #F6FFAD;
+}
+
+.showreel-page,
+.contact-page {
+  --accent: #FFFCEB;
+}
+
+:root {
+  /* Shared drop shadow so shell text reads over imagery. */
+  --ui-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
 .hero {
   position: relative;
   width: 100vw;
@@ -169,7 +187,7 @@ body {
   line-height: 1;
   letter-spacing: 1.8px;
 
-  color: var(--work-accent, rgba(232,220,200,0.84));
+  color: var(--accent, rgba(232,220,200,0.84));
 
   text-decoration: none;
 
@@ -207,7 +225,6 @@ body {
 
 .work-page .lang-switch,
 .showreel-page .lang-switch,
-.about-page .lang-switch,
 .contact-page .lang-switch {
   position: fixed;
 
@@ -215,6 +232,137 @@ body {
   right: calc(7% + 124px);
 
   z-index: 100;
+
+  color: var(--accent);
+  opacity: 1;
+  text-shadow: var(--ui-shadow);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    color var(--work-fade, 0.6s) ease;
+}
+
+/* Inner-page brand: page accent, solid, shadowed, recolours with the accent. */
+.work-page .site-brand-small,
+.showreel-page .site-brand-small,
+.contact-page .site-brand-small {
+  color: var(--accent);
+  text-shadow: var(--ui-shadow);
+
+  transition: color var(--work-fade, 0.6s) ease;
+}
+
+.work-page .site-brand-small > span,
+.work-page .site-brand-small > small,
+.showreel-page .site-brand-small > span,
+.showreel-page .site-brand-small > small,
+.contact-page .site-brand-small > span,
+.contact-page .site-brand-small > small {
+  opacity: 1;
+}
+
+/* INNER-PAGE MENU (shared: work / showreel / contact) */
+
+.menu-button {
+  position: fixed;
+
+  right: 7%;
+  top: 8%;
+
+  z-index: 60;
+
+  width: 82px;
+  height: 68px;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.menu-button span {
+  position: absolute;
+  right: 0;
+
+  display: block;
+
+  width: 42px;
+  height: 1px;
+
+  background: var(--accent);
+
+  transition: opacity 0.22s ease;
+}
+
+.menu-button span:nth-child(1) { top: 0; }
+.menu-button span:nth-child(2) { top: 13px; }
+.menu-button span:nth-child(3) { top: 26px; }
+
+.menu-active .menu-button span:nth-child(1),
+.menu-active .menu-button span:nth-child(3) {
+  opacity: 0;
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.78);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.22s ease;
+}
+
+.menu-active .menu-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 34px;
+
+  text-align: center;
+}
+
+.menu-links a {
+  text-decoration: none;
+
+  font-family: "Evolventa", sans-serif;
+
+  font-size: 15px;
+  letter-spacing: 5px;
+
+  color: var(--accent);
+
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    filter 0.22s ease;
+}
+
+.menu-active .menu-links a {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 /* WORK PLAYER — LANGUAGE SWITCH BELOW PLAYER */
@@ -313,18 +461,12 @@ body {
   filter 0.22s ease;
 }
 
-.work-menu-links a,
-.showreel-menu-links a,
-.about-menu-links a,
-.contact-menu-links a,
+.menu-links a,
 .menu-items a {
   position: relative;
 }
 
-.work-menu-links a.active::after,
-.showreel-menu-links a.active::after,
-.about-menu-links a.active::after,
-.contact-menu-links a.active::after,
+.menu-links a.active::after,
 .menu-items a.active::after {
   content: "";
 
@@ -496,7 +638,7 @@ body {
 
   text-decoration: none;
 
-  color: var(--work-accent, #F6FFAD);
+  color: var(--accent, #F6FFAD);
 
   font-family: "Circle Contrast", serif;
 
@@ -651,12 +793,25 @@ body {
 
   .work-page .lang-switch,
 .showreel-page .lang-switch,
-.about-page .lang-switch,
 .contact-page .lang-switch {
   top: 5%;
   right: calc(5% + 75px);
   z-index: 100;
 }
+
+  .menu-button {
+    right: 5%;
+    top: 5%;
+  }
+
+  .menu-links {
+    gap: 30px;
+  }
+
+  .menu-links a {
+    font-size: 14px;
+    letter-spacing: 5px;
+  }
 
 
 /* Menu opened */

@@ -1,13 +1,6 @@
 :root {
-  --work-accent: #F6FFAD;
-
   /* One clock for the whole slide transition (poster + title + loop). */
   --work-fade: 1s;
-
-  /* Shared drop shadow so text reads over the imagery. */
-  --work-text-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.6),
-    0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
 .work-page {
@@ -142,9 +135,9 @@
 
   white-space: pre-line;
 
-  color: var(--work-accent);
+  color: var(--accent);
 
-  text-shadow: var(--work-text-shadow);
+  text-shadow: var(--ui-shadow);
 }
 
 .work-title p {
@@ -154,18 +147,18 @@
   font-size: 20px;
   letter-spacing: 3.8px;
 
-  color: var(--work-accent);
+  color: var(--accent);
 
-  text-shadow: var(--work-text-shadow);
+  text-shadow: var(--ui-shadow);
 }
 .title-current h1,
 .title-current p {
-  color: var(--current-accent, var(--work-accent));
+  color: var(--current-accent, var(--accent));
 }
 
 .title-next h1,
 .title-next p {
-  color: var(--next-accent, var(--work-accent));
+  color: var(--next-accent, var(--accent));
 }
 
 /* PROJECT COUNTER */
@@ -185,9 +178,9 @@
   line-height: 1;
   letter-spacing: 2.4px;
 
-  color: var(--work-accent);
+  color: var(--accent);
 
-  text-shadow: var(--work-text-shadow);
+  text-shadow: var(--ui-shadow);
 
   opacity: 1;
 
@@ -197,7 +190,7 @@
   transition: color var(--work-fade) ease;
 }
 
-.work-menu-active .work-counter,
+.menu-active .work-counter,
 .work-page.player-open .work-counter {
   opacity: 0;
 }
@@ -215,7 +208,7 @@
   height: 92px;
 
   border-radius: 50%;
-  border: 1px solid var(--work-accent);
+  border: 1px solid var(--accent);
 
   background: transparent;
 
@@ -245,7 +238,7 @@
 
   border-top: 18px solid transparent;
   border-bottom: 18px solid transparent;
-  border-left: 28px solid var(--work-accent);
+  border-left: 28px solid var(--accent);
 }
 
 
@@ -290,8 +283,8 @@
 .work-arrow-left::before {
   left: 26%;
 
-  border-left: 1px solid var(--work-accent);
-  border-bottom: 1px solid var(--work-accent);
+  border-left: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
 }
 
 .work-arrow-right {
@@ -301,129 +294,24 @@
 .work-arrow-right::before {
   right: 26%;
 
-  border-right: 1px solid var(--work-accent);
-  border-bottom: 1px solid var(--work-accent);
+  border-right: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
 
   transform: translateY(-50%) rotate(-45deg);
 }
 
-/* MENU */
+/* MENU (component is shared in style.css) */
 
-.work-menu-button {
-  position: fixed;
-  right: 7%;
-  top: 8%;
-
-  z-index: 60;
-
-  width: 82px;
-  height: 68px;
-
-  background: transparent;
-  border: 0;
-  padding: 0;
-
-  cursor: pointer;
-  touch-action: manipulation;
-}
-
-.work-menu-button span {
-  position: absolute;
-  right: 0;
-
-  display: block;
-
-  width: 42px;
-  height: 1px;
-
-  background: var(--work-accent);
-
-  transition: opacity 0.22s ease;
-}
-
-.work-menu-button span:nth-child(1) {
-  top: 0;
-}
-
-.work-menu-button span:nth-child(2) {
-  top: 13px;
-}
-
-.work-menu-button span:nth-child(3) {
-  top: 26px;
-}
-
-.work-menu-active .work-menu-button span:nth-child(1),
-.work-menu-active .work-menu-button span:nth-child(3) {
-  opacity: 0;
-}
-
-.work-menu-overlay {
-  position: fixed;
-  inset: 0;
-
-  z-index: 30;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0,0,0,0.78);
-
-  opacity: 0;
-  pointer-events: none;
-
-  transition: opacity 0.22s ease;
-}
-
-.work-menu-active .work-menu-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.work-menu-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 34px;
-}
-
-.work-menu-links a {
-  text-decoration: none;
-
-  font-family: "Evolventa", sans-serif;
-  font-size: 15px;
-  letter-spacing: 5px;
-
-  color: var(--work-accent);
-
-  opacity: 0;
-  transform: translateY(8px);
-  filter: blur(3px);
-
-  transition:
-  opacity 0.22s ease,
-  transform 0.22s ease,
-  filter 0.22s ease;
-}
-
-.work-menu-active .work-menu-links a {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-.work-menu-active .work-title,
-.work-menu-active .title-current,
-.work-menu-active .title-next,
-.work-menu-active .work-play,
-.work-menu-active .work-arrow {
+.menu-active .work-title,
+.menu-active .title-current,
+.menu-active .title-next,
+.menu-active .work-play,
+.menu-active .work-arrow {
   opacity: 0;
   pointer-events: none;
 }
 
-.work-page.player-open .work-menu-button {
+.work-page.player-open .menu-button {
   opacity: 0;
   pointer-events: none;
 }
@@ -461,30 +349,6 @@
   background: #000;
 }
 
-/* BRAND — solid + shadowed on the work page so it reads over the imagery. */
-.work-page .site-brand-small {
-  text-shadow: var(--work-text-shadow);
-
-  /* Recolour in step with the title/poster crossfade. */
-  transition: color var(--work-fade) ease;
-}
-
-.work-page .site-brand-small > span,
-.work-page .site-brand-small > small {
-  opacity: 1;
-}
-
-/* LANG SWITCH — solid + shadowed on the work page, recolours with the accent. */
-.work-page .lang-switch {
-  opacity: 1;
-
-  text-shadow: var(--work-text-shadow);
-
-  transition:
-    opacity 0.45s ease,
-    transform 0.45s ease,
-    color var(--work-fade) ease;
-}
 
 .work-close {
   position: fixed;
@@ -496,7 +360,7 @@
   background: transparent;
   border: 0;
 
-  color: var(--work-accent);
+  color: var(--accent);
 
   font-size: 38px;
   font-weight: 200;
@@ -531,7 +395,7 @@
 
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 23px solid var(--work-accent);
+    border-left: 23px solid var(--accent);
   }
   
   .work-counter {
@@ -567,20 +431,6 @@
     font-size: 34px;
   }
 
-  .work-menu-button {
-    right: 5%;
-    top: 5%;
-  }
-
-  .work-menu-links {
-    gap: 30px;
-  }
-
-  .work-menu-links a {
-    font-size: 14px;
-    letter-spacing: 5px;
-  }
-  
   .work-page.player-open .site-brand-small {
   opacity: 0;
   pointer-events: none;

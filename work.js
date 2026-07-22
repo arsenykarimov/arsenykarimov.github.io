@@ -21,8 +21,8 @@ const arrowLeft = document.querySelector('.work-arrow-left');
 const arrowRight = document.querySelector('.work-arrow-right');
 const workViewer = document.querySelector('.work-viewer');
 
-const workMenuButton = document.querySelector('.work-menu-button');
-const workMenuOverlay = document.querySelector('.work-menu-overlay');
+const workMenuButton = document.querySelector('.menu-button');
+const workMenuOverlay = document.querySelector('.menu-overlay');
 
 const canHover = window.matchMedia('(hover: hover)').matches;
 
@@ -163,7 +163,7 @@ function loadFirstProject() {
 
   updateProjectCounter();
 
-  document.documentElement.style.setProperty('--work-accent', project.accent);
+  document.documentElement.style.setProperty('--accent', project.accent);
   document.documentElement.style.setProperty('--current-accent', project.accent);
 
   applyProject(currentProject);
@@ -211,12 +211,12 @@ function showProject(direction) {
     loopVideo.pause();
 
     // Title + accent colours + counter all recolour on the SAME frame as the
-    // poster crossfade. --work-accent drives the UI (counter, arrows, logo),
+    // poster crossfade. --accent drives the UI (counter, arrows, logo),
     // so it must change now, not at the end — otherwise the UI lags ~1s behind.
     nextTitleText.textContent = nextProject.title;
     nextSubtitleText.textContent = nextProject.subtitle;
     document.documentElement.style.setProperty('--next-accent', nextProject.accent);
-    document.documentElement.style.setProperty('--work-accent', nextProject.accent);
+    document.documentElement.style.setProperty('--accent', nextProject.accent);
     updateProjectCounter();
     nextTitleBlock.classList.add('cross-in');
     currentTitleBlock.classList.add('cross-out');
@@ -274,14 +274,14 @@ function openWorkMenu() {
   playButton.classList.remove('visible');
   playVisible = false;
 
-  document.body.classList.add('work-menu-active');
+  document.body.classList.add('menu-active');
 
   workMenuOpen = true;
 }
 
 
 function closeWorkMenu() {
-  document.body.classList.remove('work-menu-active');
+  document.body.classList.remove('menu-active');
 
   workMenuOpen = false;
 
@@ -299,8 +299,8 @@ workViewer.addEventListener('click', (event) => {
     event.target.closest('.work-arrow') ||
     event.target.closest('.work-play') ||
     event.target.closest('.work-player') ||
-    event.target.closest('.work-menu-button') ||
-    event.target.closest('.work-menu-overlay')
+    event.target.closest('.menu-button') ||
+    event.target.closest('.menu-overlay')
   ) {
     return;
   }
@@ -325,8 +325,8 @@ if (canHover) {
       isSwitching ||
       player.classList.contains('visible') ||
       event.target.closest('.work-arrow') ||
-      event.target.closest('.work-menu-button') ||
-      event.target.closest('.work-menu-overlay') ||
+      event.target.closest('.menu-button') ||
+      event.target.closest('.menu-overlay') ||
       event.target.closest('.work-play')
     ) {
       return;
@@ -360,7 +360,7 @@ if (canHover) {
 playButton.addEventListener('click', () => {
   stopTitlePlayTimer();
   hoverActive = false;
-  document.body.classList.remove('work-menu-active');
+  document.body.classList.remove('menu-active');
   workMenuOpen = false;
 
 
@@ -403,7 +403,7 @@ workMenuButton.addEventListener('click', () => {
 
 
 workMenuOverlay.addEventListener('click', (event) => {
-  if (!event.target.closest('.work-menu-links')) {
+  if (!event.target.closest('.menu-links')) {
     closeWorkMenu();
   }
 });
