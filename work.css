@@ -1,5 +1,13 @@
 :root {
   --work-accent: #F6FFAD;
+
+  /* One clock for the whole slide transition (poster + title + loop). */
+  --work-fade: 1s;
+
+  /* Shared drop shadow so text reads over the imagery. */
+  --work-text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
 .work-page {
@@ -16,6 +24,20 @@
   height: 100dvh;
 
   overflow: hidden;
+}
+
+/* Black transparent overlay across the whole canvas so the title and UI
+   read over the imagery. Sits above the posters/loop (z 1–3) but below all
+   text and controls (title z6, counter/arrows/play z7, links z60+). */
+.work-viewer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  pointer-events: none;
 }
 
 
@@ -39,10 +61,9 @@
   z-index: 1;
   opacity: 0;
   transform: scale(1);
-    transition:
-    opacity 0.4s ease,
-    transform 0.4s ease,
-    filter 0.4s ease;
+  transition:
+    opacity var(--work-fade) ease,
+    transform var(--work-fade) ease;
 }
 
 .work-poster.active {
@@ -50,42 +71,19 @@
   transform: scale(1.04);
 }
 
-.work-poster.arriving {
-  transform: scale(1);
-}
-
 .work-loop {
-  z-index: 2;
+  z-index: 3;
   opacity: 0;
-  transition: opacity 0.18s ease;
+  transition: opacity var(--work-fade) ease;
 }
 
 .work-loop.visible {
   opacity: 1;
 }
 
-.work-page.work-transition .work-poster {
-  filter:
-    contrast(.78)
-    brightness(1.06);
-}
-
-
-/* DIM */
-
-.work-dim {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(0,0,0,.22),
-      rgba(0,0,0,.84)
-    );
-
-  pointer-events: none;
+/* Used to drop the previous clip with no fade before the poster crossfade. */
+.work-loop.instant {
+  transition: none;
 }
 
 
@@ -94,7 +92,7 @@
 .work-title {
   position: absolute;
   left: 50%;
-  top: 48%;
+  top: 50%;
 
   transform: translate(-50%,-50%);
 
@@ -103,8 +101,8 @@
   text-align: center;
 
   transition:
-    opacity 0.35s ease,
-    filter 0.35s ease;
+    opacity var(--work-fade) ease,
+    filter var(--work-fade) ease;
 }
 
 .title-current {
@@ -137,14 +135,16 @@
   font-family: "Circle Contrast", serif;
   font-size: 30px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.35;
 
   letter-spacing: 31.2px;
   padding-left: 31.2px;
 
   white-space: pre-line;
 
-  color: color-mix(in srgb, var(--work-accent) 84%, transparent);
+  color: var(--work-accent);
+
+  text-shadow: var(--work-text-shadow);
 }
 
 .work-title p {
@@ -154,16 +154,18 @@
   font-size: 20px;
   letter-spacing: 3.8px;
 
-  color: color-mix(in srgb, var(--work-accent) 84%, transparent);
+  color: var(--work-accent);
+
+  text-shadow: var(--work-text-shadow);
 }
 .title-current h1,
 .title-current p {
-  color: color-mix(in srgb, var(--current-accent, var(--work-accent)) 84%, transparent);
+  color: var(--current-accent, var(--work-accent));
 }
 
 .title-next h1,
 .title-next p {
-  color: color-mix(in srgb, var(--next-accent, var(--work-accent)) 84%, transparent);
+  color: var(--next-accent, var(--work-accent));
 }
 
 /* PROJECT COUNTER */
@@ -183,15 +185,16 @@
   line-height: 1;
   letter-spacing: 2.4px;
 
-  color: color-mix(
-    in srgb,
-    var(--work-accent) 84%,
-    transparent
-  );
+  color: var(--work-accent);
 
-  opacity: 0.55;
+  text-shadow: var(--work-text-shadow);
+
+  opacity: 1;
 
   pointer-events: none;
+
+  /* Recolour in step with the title/poster crossfade. */
+  transition: color var(--work-fade) ease;
 }
 
 .work-menu-active .work-counter,
@@ -213,11 +216,6 @@
 
   border-radius: 50%;
   border: 1px solid var(--work-accent);
-  border: 1px solid color-mix(
-  in srgb,
-  var(--work-accent) 84%,
-  transparent
-);
 
   background: transparent;
 
@@ -248,11 +246,6 @@
   border-top: 18px solid transparent;
   border-bottom: 18px solid transparent;
   border-left: 28px solid var(--work-accent);
-  border-left: 28px solid color-mix(
-  in srgb,
-  var(--work-accent) 84%,
-  transparent
-);
 }
 
 
@@ -285,6 +278,9 @@
   z-index: 2;
 
   transform: translateY(-50%) rotate(45deg);
+
+  /* Recolour in step with the title/poster crossfade. */
+  transition: border-color var(--work-fade) ease;
 }
 
 .work-arrow-left {
@@ -294,8 +290,8 @@
 .work-arrow-left::before {
   left: 26%;
 
-  border-left: 1px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
-  border-bottom: 1px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
+  border-left: 1px solid var(--work-accent);
+  border-bottom: 1px solid var(--work-accent);
 }
 
 .work-arrow-right {
@@ -305,67 +301,10 @@
 .work-arrow-right::before {
   right: 26%;
 
-  border-right: 1px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
-  border-bottom: 1px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
+  border-right: 1px solid var(--work-accent);
+  border-bottom: 1px solid var(--work-accent);
 
   transform: translateY(-50%) rotate(-45deg);
-}
-
-.work-arrow::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  opacity: 0;
-  z-index: 1;
-
-  -webkit-mask-image:
-    linear-gradient(
-      to bottom,
-      transparent,
-      #000 18%,
-      #000 82%,
-      transparent
-    );
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      transparent,
-      #000 18%,
-      #000 82%,
-      transparent
-    );
-
-  transition:
-    opacity 0.65s ease;
-
-  pointer-events: none;
-}
-
-.work-arrow-left::after {
-  background:
-    linear-gradient(
-      to right,
-      rgba(0,0,0,0.24),
-      rgba(0,0,0,0)
-    );
-}
-
-.work-arrow-right::after {
-  background:
-    linear-gradient(
-      to left,
-      rgba(0,0,0,0.24),
-      rgba(0,0,0,0)
-    );
-}
-
-.work-arrow:active::after {
-  opacity: 1;
-
-  transition:
-    opacity 0.18s ease;
 }
 
 /* MENU */
@@ -397,7 +336,7 @@
   width: 42px;
   height: 1px;
 
-  background: color-mix(in srgb, var(--work-accent) 84%, transparent);
+  background: var(--work-accent);
 
   transition: opacity 0.22s ease;
 }
@@ -457,7 +396,7 @@
   font-size: 15px;
   letter-spacing: 5px;
 
-  color: color-mix(in srgb, var(--work-accent) 84%, transparent);
+  color: var(--work-accent);
 
   opacity: 0;
   transform: translateY(8px);
@@ -522,6 +461,31 @@
   background: #000;
 }
 
+/* BRAND — solid + shadowed on the work page so it reads over the imagery. */
+.work-page .site-brand-small {
+  text-shadow: var(--work-text-shadow);
+
+  /* Recolour in step with the title/poster crossfade. */
+  transition: color var(--work-fade) ease;
+}
+
+.work-page .site-brand-small > span,
+.work-page .site-brand-small > small {
+  opacity: 1;
+}
+
+/* LANG SWITCH — solid + shadowed on the work page, recolours with the accent. */
+.work-page .lang-switch {
+  opacity: 1;
+
+  text-shadow: var(--work-text-shadow);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    color var(--work-fade) ease;
+}
+
 .work-close {
   position: fixed;
   right: 4%;
@@ -532,7 +496,7 @@
   background: transparent;
   border: 0;
 
-  color: color-mix(in srgb,var(--work-accent) 84%,transparent);
+  color: var(--work-accent);
 
   font-size: 38px;
   font-weight: 200;
@@ -543,10 +507,6 @@
 /* MOBILE */
 
 @media (max-width: 768px) {
-
-  .work-title {
-    top: 47%;
-  }
 
   .work-title h1 {
     font-size: 22px;
@@ -571,7 +531,7 @@
 
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 23px solid color-mix(in srgb,var(--work-accent) 84%,transparent);
+    border-left: 23px solid var(--work-accent);
   }
   
   .work-counter {

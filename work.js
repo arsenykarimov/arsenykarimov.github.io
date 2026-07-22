@@ -26,6 +26,11 @@ const workMenuOverlay = document.querySelector('.work-menu-overlay');
 
 const canHover = window.matchMedia('(hover: hover)').matches;
 
+// Transition duration, read from --work-fade in work.css so JS + CSS stay in sync.
+const FADE_MS = (parseFloat(
+  getComputedStyle(document.documentElement).getPropertyValue('--work-fade')
+) || 0.5) * 1000;
+
 let currentProject = 0;
 let activePoster = posterA;
 let hiddenPoster = posterB;
@@ -152,7 +157,6 @@ function loadFirstProject() {
 
   activePoster.src = project.poster;
   activePoster.classList.add('active');
-  activePoster.classList.remove('arriving');
 
   titleText.textContent = project.title;
   subtitleText.textContent = project.subtitle;
@@ -182,8 +186,6 @@ function showProject(direction) {
   stopTitlePlayTimer();
   closeWorkMenu();
   showTitle();
-  
-  loopVideo.classList.remove('visible');
 
   const nextIndex =
     direction === 'next'
@@ -191,71 +193,75 @@ function showProject(direction) {
       : (currentProject - 1 + projects.length) % projects.length;
 
   const nextProject = projects[nextIndex];
-  const preloadPoster = new Image();
 
-  preloadPoster.onload = () => {
-    hiddenPoster.classList.add('arriving');
-    hiddenPoster.src = nextProject.poster;
+  const previousPoster = activePoster;
+  const nextPoster = hiddenPoster;
 
+  // Load the incoming still into the (invisible) hidden poster up front.
+  nextPoster.src = nextProject.poster;
+
+  const runTransition = () => {
+    currentProject = nextIndex;
+
+    // The previous loop clip sits above the posters — drop it with no fade so
+    // the poster crossfade underneath is visible. The still shows the same
+    // frame, so the swap is seamless.
+    loopVideo.classList.add('instant');
+    loopVideo.classList.remove('visible');
+    loopVideo.pause();
+
+    // Title + accent colours + counter all recolour on the SAME frame as the
+    // poster crossfade. --work-accent drives the UI (counter, arrows, logo),
+    // so it must change now, not at the end — otherwise the UI lags ~1s behind.
     nextTitleText.textContent = nextProject.title;
     nextSubtitleText.textContent = nextProject.subtitle;
-
     document.documentElement.style.setProperty('--next-accent', nextProject.accent);
-
+    document.documentElement.style.setProperty('--work-accent', nextProject.accent);
+    updateProjectCounter();
     nextTitleBlock.classList.add('cross-in');
     currentTitleBlock.classList.add('cross-out');
 
-    document.body.classList.add('work-transition');
-
-    setTimeout(() => {
-    currentProject = nextIndex;
-
-    const previousPoster = activePoster;
-    const nextPoster = hiddenPoster;
-
-    previousPoster.classList.remove('active');
-
-    requestAnimationFrame(() => {
+    // Incoming poster goes on top and is reset to its hidden / un-zoomed start
+    // WITHOUT animating the reset, then fades in AND zooms as a single gesture
+    // over the still-opaque outgoing poster (which stays put — no flash).
+    nextPoster.style.zIndex = '2';
+    previousPoster.style.zIndex = '1';
+    nextPoster.style.transition = 'none';
+    nextPoster.classList.remove('active');
+    void nextPoster.offsetWidth;
+    nextPoster.style.transition = '';
     nextPoster.classList.add('active');
-});
 
     activePoster = nextPoster;
     hiddenPoster = previousPoster;
 
-      setTimeout(() => {
-        activePoster.classList.remove('arriving');
-      }, 420);
+    // Prepare the new loop clip (its poster attribute matches the still).
+    applyProject(currentProject);
 
-      applyProject(currentProject);
+    // When the crossfade lands, everything commits together.
+    setTimeout(() => {
+      previousPoster.classList.remove('active');
 
-      setTimeout(() => {
-        titleText.textContent = nextProject.title;
-        subtitleText.textContent = nextProject.subtitle;
+      titleText.textContent = nextProject.title;
+      subtitleText.textContent = nextProject.subtitle;
+      document.documentElement.style.setProperty('--current-accent', nextProject.accent);
 
-        updateProjectCounter();
+      loopVideo.classList.remove('instant');
+      loopVideo.classList.add('visible');
 
-        document.documentElement.style.setProperty('--work-accent', nextProject.accent);
-        document.documentElement.style.setProperty('--current-accent', nextProject.accent);
-
-
-        document.body.classList.remove('work-transition');
-        isSwitching = false;
-
-        loopVideo.classList.add('visible');
-
-        playVisible = false;
-        startTitlePlayTimer();
-      }, 520);
-
-    }, 100);
+      isSwitching = false;
+      playVisible = false;
+      startTitlePlayTimer();
+    }, FADE_MS);
   };
 
-  preloadPoster.onerror = () => {
-    isSwitching = false;
-    startTitlePlayTimer();
-  };
-
-  preloadPoster.src = nextProject.poster;
+  // Start the moment the incoming poster is decodable — instant for the
+  // already-preloaded posters, a short wait otherwise.
+  if (nextPoster.decode) {
+    nextPoster.decode().then(runTransition).catch(runTransition);
+  } else {
+    runTransition();
+  }
 }
 
 
