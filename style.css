@@ -191,7 +191,7 @@ body {
 
   text-decoration: none;
 
-  opacity: 0.5;
+  opacity: 1;
 
   transition:
     opacity 0.45s ease,
@@ -784,7 +784,7 @@ body {
   font-size: 15px;
   letter-spacing: 1.6px;
 
-  opacity: 0.42;
+  opacity: 1;
 }
 
 .lang-switch::after {
