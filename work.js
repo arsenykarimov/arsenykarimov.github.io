@@ -160,8 +160,8 @@ function loadFirstProject() {
 
   updateProjectCounter();
 
-  document.documentElement.style.setProperty('--accent', project.accent);
-  document.documentElement.style.setProperty('--current-accent', project.accent);
+  document.body.style.setProperty('--accent', project.accent);
+  document.body.style.setProperty('--current-accent', project.accent);
 
   applyProject(currentProject);
   loopVideo.addEventListener('canplay', () => {
@@ -212,8 +212,8 @@ function showProject(direction) {
     // so it must change now, not at the end — otherwise the UI lags ~1s behind.
     nextTitleText.textContent = nextProject.title;
     nextSubtitleText.textContent = nextProject.subtitle;
-    document.documentElement.style.setProperty('--next-accent', nextProject.accent);
-    document.documentElement.style.setProperty('--accent', nextProject.accent);
+    document.body.style.setProperty('--next-accent', nextProject.accent);
+    document.body.style.setProperty('--accent', nextProject.accent);
     updateProjectCounter();
     nextTitleBlock.classList.add('cross-in');
     currentTitleBlock.classList.add('cross-out');
@@ -241,7 +241,7 @@ function showProject(direction) {
 
       titleText.textContent = nextProject.title;
       subtitleText.textContent = nextProject.subtitle;
-      document.documentElement.style.setProperty('--current-accent', nextProject.accent);
+      document.body.style.setProperty('--current-accent', nextProject.accent);
 
       loopVideo.classList.remove('instant');
       loopVideo.classList.add('visible');
