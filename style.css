@@ -902,9 +902,19 @@ body {
 
   /* MOBILE BRAND */
 
-  .site-brand-small {
-    left: 5%;
-    top: 5%;
-  }
+  /* MOBILE BRAND */
+
+.site-brand-small {
+  left: 5%;
+  top: 5%;
+
+  color: var(--accent);
+  text-shadow: var(--ui-shadow);
+}
+
+.site-brand-small > span,
+.site-brand-small > small {
+  opacity: 1;
+}
 
 }
