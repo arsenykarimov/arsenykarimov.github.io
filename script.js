@@ -88,6 +88,29 @@ if (workLink) {
   });
 }
 
+// Add preload animation for HOME, SHOWREEL, CONTACT links
+const homeLink = document.querySelector('a[href="index.html"]');
+const showreelLink = document.querySelector('a[href="showreel.html"]');
+const contactLink = document.querySelector('a[href="contact.html"]');
+
+const otherNavLinks = [homeLink, showreelLink, contactLink];
+
+otherNavLinks.forEach((link) => {
+  if (link) {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      // Add loading animation
+      link.classList.add('loading');
+
+      // Wait for animation to complete before navigating
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, 900);
+    });
+  }
+});
+
 const heroTitle = document.querySelector('.hero-title');
 
 if (heroTitle) {
